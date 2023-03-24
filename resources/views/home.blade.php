@@ -6,7 +6,7 @@
             <h1>ini home</h1>
         </div>
         <div class="col-md-8 bg-danger">
-            <h1>sidebar</h1>
+            <h1>sidebarr</h1>
         </div>
     </div>
 @endsection
