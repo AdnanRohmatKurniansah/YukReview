@@ -23,3 +23,6 @@ Route::post('/auth/login', [AuthController::class, 'authenticate']);
 Route::get('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/register', [AuthController::class, 'store']);
 
+Route::get('/dashboard/index', function () {
+    return view('dashboard.index');
+});
