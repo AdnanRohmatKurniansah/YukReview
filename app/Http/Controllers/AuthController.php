@@ -26,9 +26,9 @@ class AuthController extends Controller
 
         $validatedData['password'] = Hash::make($validatedData['password']);
 
-        User::create($validatedData);
+        User::create($validatedData);   
 
-        return redirect('/dashboard/index')->with('success', 'Registration successfull! Please login ');
+        return redirect('/auth/login')->with('success', 'Registration successfull! ');
     }
 
     public function login() {
@@ -44,7 +44,7 @@ class AuthController extends Controller
         
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard/index');
+            return redirect()->intended('/dashboard/index')->with('successLog', 'Login berhasil');
         }
         return back()->with('loginError', 'Login failed!');
     }

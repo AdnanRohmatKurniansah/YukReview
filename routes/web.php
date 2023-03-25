@@ -18,11 +18,12 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/auth/login', [AuthController::class, 'login']);
+Route::get('/auth/login', [AuthController::class, 'login'])->name('login');
 Route::post('/auth/login', [AuthController::class, 'authenticate']);
 Route::get('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/register', [AuthController::class, 'store']);
+Route::post('/auth/logout', [AuthController::class, 'logout']);
 
 Route::get('/dashboard/index', function () {
     return view('dashboard.index');
-});
+})->middleware('auth');

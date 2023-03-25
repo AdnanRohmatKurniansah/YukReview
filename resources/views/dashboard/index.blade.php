@@ -1,6 +1,13 @@
 @extends('layout.dashboard')
 
 @section('content')
+@if (session()->has('success')) 
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  @endif
+
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Dashboard</h1>
@@ -16,6 +23,13 @@
       </div>
     </div>
 
+    @if (session()->has('successLog')) 
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('successLog') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  @endif
+  
     <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
     <h2>Section title</h2>
