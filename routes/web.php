@@ -30,3 +30,7 @@ Route::prefix('auth')->group(function() {
 Route::get('/dashboard/index', function () {
     return view('dashboard.index');
 })->middleware('auth');
+
+Route::get('/dashboard/profile', function () {
+    return view('dashboard.profile');
+})->middleware('auth');

@@ -1,12 +1,7 @@
 @extends('layout.dashboard')
 
 @section('content')
-@if (session()->has('success')) 
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ session('success') }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  @endif
+
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -23,9 +18,9 @@
       </div>
     </div>
 
-    @if (session()->has('successLog')) 
+    @if (session()->has('success')) 
   <div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ session('successLog') }}
+    {{ session('success') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   @endif
