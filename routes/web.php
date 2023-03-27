@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/movies', function () {
+    return view('movies');
+});
+
 Route::prefix('auth')->group(function() {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'authenticate']);
@@ -31,6 +35,3 @@ Route::get('/dashboard/index', function () {
     return view('dashboard.index');
 })->middleware('auth');
 
-Route::get('/dashboard/profile', function () {
-    return view('dashboard.profile');
-})->middleware('auth');
