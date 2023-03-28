@@ -22,6 +22,10 @@ Route::get('/movies', function () {
     return view('movies');
 });
 
+Route::get('/movieDetail', function () {
+    return view('movieDetail');
+});
+
 Route::prefix('auth')->group(function() {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'authenticate']);

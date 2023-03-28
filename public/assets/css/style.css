@@ -288,6 +288,30 @@ a {
     }
   }
 
+  .year .radio{
+    padding: 2px 1px;
+    cursor: pointer
+  }
+  .year .radio input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none
+  }
+  .year .radio span{
+    padding: 4px 15px;
+    border: 1px solid #7e7474;
+    display: inline-block;
+    color: #000;
+    border-radius: 3px;
+    text-transform: uppercase
+  }
+  .year .radio input:checked+span {
+    background-color: #696767;
+    color: #fff
+  }
+
 
   /* footer */
   #footer {
