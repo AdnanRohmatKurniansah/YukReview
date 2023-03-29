@@ -37,47 +37,7 @@
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos doloremque commodi earum. Reiciendis, rerum mollitia. Dolorum, atque, dolore ipsum illo adipisci doloribus debitis, nostrum explicabo nobis sequi fugiat ipsa laborum iure quas blanditiis cumque suscipit veniam! Dolore, ducimus magnam aperiam animi dolorem corrupti eius. Tempore, commodi ullam. Voluptatem consectetur ullam nesciunt impedit atque distinctio ut harum, error provident culpa ab amet maxime tempore enim pariatur esse facilis architecto iusto. Ut veritatis eius qui modi aut provident cum, illum sequi accusantium repudiandae enim ad sint iure, nisi rem nesciunt quam aliquid sit laudantium hic fuga doloribus neque reiciendis? Quia illum nam saepe ab, qui necessitatibus, dicta, suscipit a consectetur doloremque ipsa voluptatum dolore quisquam corporis accusamus molestiae tenetur? Sapiente tenetur, numquam aperiam doloribus quis dolore porro laborum expedita similique labore delectus quasi autem dolor amet magni impedit adipisci fugit eius facere odio perferendis. Temporibus quam numquam, in facere sequi optio corporis.</p>
                         <h3 style="border-bottom: 1px solid rgb(212, 212, 212); padding-bottom: 5px; ">Actors</h3>
                         <div class="actor">
-                            <div class="col-xs-11 col-md-10 col-centered">
-                                <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
-                                    <div class="carousel-inner">
-                                        <div class="item active">
-                                            <div class="carousel-col">
-                                                <div class="block red img-responsive"></div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="carousel-col">
-                                                <div class="block green img-responsive"></div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="carousel-col">
-                                                <div class="block blue img-responsive"></div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="carousel-col">
-                                                <div class="block yellow img-responsive"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                    
-                                    <!-- Controls -->
-                                    <div class="left carousel-control">
-                                        <a href="#carousel" role="button" data-slide="prev">
-                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                    </div>
-                                    <div class="right carousel-control">
-                                        <a href="#carousel" role="button" data-slide="next">
-                                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </div>
-                                </div>
-                    
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -115,6 +75,37 @@
                                   </div>
                                 </div>
                               </div>
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row g-0">
+                                  <div class="col-md-4">
+                                    <img src="/assets/img/avenger.jpg" style="min-height: 150px" class="img-fluid rounded-start" alt="...">
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Avenger End Game</h5>
+                                      <p style="font-size: 14px"><i class="bi bi-stopwatch"></i> 02 hours 30 minutes</p>
+                                      <p style="font-size: 15px">Comic, Magic</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row g-0">
+                                  <div class="col-md-4">
+                                    <img src="/assets/img/avenger.jpg" style="min-height: 150px" class="img-fluid rounded-start" alt="...">
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Avenger End Game</h5>
+                                      <p style="font-size: 14px"><i class="bi bi-stopwatch"></i> 02 hours 30 minutes</p>
+                                      <p style="font-size: 15px">Comic, Magic</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                    </div>
+                    <div class="toplists pb-3" style="color: white;">
+                        <h3 style="border-bottom: 1px solid rgb(212, 212, 212); padding-bottom: 5px; ">Recent News</h3>
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
                                   <div class="col-md-4">
