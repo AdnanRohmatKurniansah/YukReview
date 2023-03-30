@@ -10,9 +10,9 @@
 
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a href="/movies">Movies</a></li>
-        <li><a href="#about">Top Lists</a></li>
-        <li><a href="#menu">News</a></li>
+        <li><a class="nav-link {{ Request::is('movies') ? 'active' : '' }}" href="/movies">Movies</a></li>
+        <li><a  href="/">Top Lists</a></li>
+        <li><a class="nav-link {{ Request::is('news') ? 'active' : '' }}" href="/news">News</a></li>
       </ul>
     </nav><!-- .navbar -->
 

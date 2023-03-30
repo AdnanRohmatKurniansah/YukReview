@@ -104,7 +104,7 @@
                                 </div>
                               </div>
                     </div>
-                    <div class="toplists pb-3" style="color: white;">
+                    <div class="recentNews pb-3" style="color: white;">
                         <h3 style="border-bottom: 1px solid rgb(212, 212, 212); padding-bottom: 5px; ">Recent News</h3>
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">

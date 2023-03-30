@@ -10,51 +10,12 @@
                   <h3 class="card-title">World Starts With Word Peace</h3>
                   <p class="card-text"><a href="" style="color: blue">Tennis, TV Rumors</a>  . <small class="text-body-secondary">February 5, 2019</small></p>
                   <p class="excerpt card-text">Praesent iaculis, purus ac vehicula mattis, arcu lorem blandit nisl, non laoreet dui mi eget elit. Donec porttitor ex vel augue maximus luctus. Vivamus finibus nibh eu nunc volutpat suscipit.</p>
+                  <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste cumque eum facilis? Harum assumenda natus rerum. Ut voluptas quae illo reiciendis id? Optio quos eum sint iste nulla velit quasi, corporis reiciendis sequi, ipsam excepturi accusantium fuga asperiores quibusdam provident possimus pariatur laboriosam ratione incidunt non atque harum. Modi libero nesciunt saepe placeat, tempora optio pariatur in error sit maiores voluptates cum dicta, rem numquam esse veniam debitis cupiditate. Sit veniam consequuntur sed, praesentium sint aliquid dignissimos, perferendis odio non rem eius labore nostrum corporis neque saepe voluptates quisquam! Non, doloribus iure! Odit, magni eius! Velit asperiores eveniet a placeat.</p>
+                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum neque non ab, ipsum, iusto enim magni voluptatibus at consectetur esse architecto reiciendis aliquid harum fuga iure saepe explicabo beatae voluptate quisquam a maxime veritatis. Delectus ipsum ullam nam mollitia fugit dolores eius similique dicta laborum id. Voluptatem ipsa vero voluptatum.</p>
+                  <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste cumque eum facilis? Harum assumenda natus rerum. Ut voluptas quae illo reiciendis id? Optio quos eum sint iste nulla velit quasi, corporis reiciendis sequi, ipsam excepturi accusantium fuga asperiores quibusdam provident possimus pariatur laboriosam ratione incidunt non atque harum. Modi libero nesciunt saepe placeat, tempora optio pariatur in error sit maiores voluptates cum dicta, rem numquam esse veniam debitis cupiditate. Sit veniam consequuntur sed, praesentium sint aliquid dignissimos, perferendis odio non rem eius labore nostrum corporis neque saepe voluptates quisquam! Non, doloribus iure! Odit, magni eius! Velit asperiores eveniet a placeat.</p>
                 </div>
               </div>
-              <div class="card mb-3">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="/assets/img/news/news-1.jpg" class="img-fluid rounded-start" alt="..." style="min-height: 200px">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h3 class="card-title">World Starts With Word Peace</h3>
-                      <p class="card-text"><a href="" style="color: blue">Tennis, TV Rumors</a>  . <small class="text-body-secondary">February 5, 2019</small></p>
-                    <p class="excerpt card-text">Praesent iaculis, purus ac vehicula mattis, arcu lorem blandit nisl, non laoreet dui mi eget elit. Donec porttitor ex vel augue maximus luctus. Vivamus finibus nibh eu nunc volutpat suscipit.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card mb-3">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="/assets/img/news/news-1.jpg" class="img-fluid rounded-start" alt="..." style="min-height: 200px">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h3 class="card-title">World Starts With Word Peace</h3>
-                      <p class="card-text"><a href="" style="color: blue">Tennis, TV Rumors</a>  . <small class="text-body-secondary">February 5, 2019</small></p>
-                    <p class="excerpt card-text">Praesent iaculis, purus ac vehicula mattis, arcu lorem blandit nisl, non laoreet dui mi eget elit. Donec porttitor ex vel augue maximus luctus. Vivamus finibus nibh eu nunc volutpat suscipit.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card mb-3">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="/assets/img/news/news-1.jpg" class="img-fluid rounded-start" alt="..." style="min-height: 200px">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h3 class="card-title">World Starts With Word Peace</h3>
-                      <p class="card-text"><a href="" style="color: blue">Tennis, TV Rumors</a>  . <small class="text-body-secondary">February 5, 2019</small></p>
-                    <p class="excerpt card-text">Praesent iaculis, purus ac vehicula mattis, arcu lorem blandit nisl, non laoreet dui mi eget elit. Donec porttitor ex vel augue maximus luctus. Vivamus finibus nibh eu nunc volutpat suscipit.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
+
         </div>
         <div class="col-lg-4 mt-3">
             <div class="input-group mb-3">
@@ -154,24 +115,6 @@
             </div>
         </div>
     </div>
-    <div class="paginate d-flex justify-content-center mt-4 mb-5">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination ">
-          <li class="page-item">
-            <a class="page-link bg-dark text-light" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link bg-dark text-light" href="#">1</a></li>
-          <li class="page-item"><a class="page-link bg-dark text-light" href="#">2</a></li>
-          <li class="page-item"><a class="page-link bg-dark text-light" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link bg-dark text-light" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    
 </div>
 @endsection

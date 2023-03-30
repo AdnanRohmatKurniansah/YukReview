@@ -30,6 +30,10 @@ Route::get('/news', function () {
     return view('news');
 });
 
+Route::get('/newsDetail', function () {
+    return view('newsDetail');
+});
+
 Route::prefix('auth')->group(function() {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'authenticate']);

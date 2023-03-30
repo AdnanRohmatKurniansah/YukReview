@@ -312,6 +312,12 @@ a {
     color: #fff
   }
 
+  /* rate */
+  .checked {
+    color: orange;
+  }
+  
+
 
   /*  search  */
   
