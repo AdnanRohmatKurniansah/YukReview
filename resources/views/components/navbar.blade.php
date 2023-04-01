@@ -10,13 +10,13 @@
 
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link {{ Request::is('movies') ? 'active' : '' }}" href="/movies">Movies</a></li>
-        <li><a  href="/">Top Lists</a></li>
-        <li><a class="nav-link {{ Request::is('news') ? 'active' : '' }}" href="/news">News</a></li>
+        <li><a class="nav-link {{ Request::is('movies') || Request::is('movieDetail') ? 'active' : '' }}" href="/movies">Movies</a></li>
+        <li><a class="nav-link {{ Request::is('toplists') ? 'active' : '' }}" href="/toplists">Top Lists</a></li>
+        <li><a class="nav-link {{ Request::is('news') || Request::is('newsDetail') ? 'active' : '' }}" href="/news">News</a></li>
       </ul>
     </nav><!-- .navbar -->
 
-    <a class="btn-book-a-table" href="#book-a-table">Sign In</a>
+    <a class="btn-sign" href="#">Sign In</a>
     <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
     <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 

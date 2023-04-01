@@ -78,8 +78,3 @@
       }
     })
   });
-
-  // slide actor
-  /*
-    Carousel
-*/

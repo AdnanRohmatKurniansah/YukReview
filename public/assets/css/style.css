@@ -36,22 +36,17 @@ a {
   
   
   
-  .header .btn-book-a-table,
-  .header .btn-book-a-table:focus {
+  .header .btn-sign,
+  .header .btn-sign:focus {
     font-size: 18px;
     color: #fff;
-    background: var(--color-primary);
     padding: 8px 20px;
     margin-left: 30px;
     border-radius: 50px;
     transition: 0.3s;
+    background: rgba(53, 51, 51, 0.8);
   }
   
-  .header .btn-book-a-table:hover,
-  .header .btn-book-a-table:focus:hover {
-    color: #fff;
-    background: rgba(206, 18, 18, 0.8);
-  }
   
   section {
     scroll-margin-top: 90px;
@@ -88,7 +83,6 @@ a {
       align-items: center;
       justify-content: space-between;
       padding: 0 3px;
-      font-family: var(--font-secondary);
       font-size: 18px;
       font-weight: 600;
       color: #fff;
@@ -173,7 +167,6 @@ a {
       align-items: center;
       justify-content: space-between;
       padding: 10px 20px;
-      font-family: var(--font-secondary);
       border-bottom: 2px solid rgba(255, 255, 255, 0.8);
       font-size: 16px;
       font-weight: 600;
@@ -191,12 +184,12 @@ a {
   
     .navbar a:hover,
     .navbar li:hover>a {
-      color: #000;
+      color: #8a8787;
     }
   
     .navbar .active,
     .navbar .active:focus {
-      color: #000;
+      color: #fff;
       border-color: red;
     }
   
@@ -245,7 +238,6 @@ a {
   .large-hero {
     position: relative;
     width: 100%;
-    
     overflow: hidden;
     background-size: cover;
     background-position: center center;
@@ -265,7 +257,7 @@ a {
     padding: 0;
     color: #f9f1e9;
     text-align: center;
-    top: 50%;
+    top: 35%;
     left: 50%;
     -webkit-transform: translate3d(-50%,-50%,0);
     transform: translate3d(-50%,-50%,0);
@@ -286,6 +278,7 @@ a {
     .demo-1 .main-title {
       font-size: 3em;
     }
+
   }
 
   .year .radio{
@@ -316,15 +309,6 @@ a {
   .checked {
     color: orange;
   }
-  
-
-
-  /*  search  */
-  
-
-  /* actors slide */
-  
-
 
 
   /* footer */

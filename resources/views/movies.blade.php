@@ -1,13 +1,13 @@
 @extends('layout.main')
 
 @section('content')
-<section id="movies" style="background-color: rgb(14, 21, 39); padding-top: 130px; padding-bottom: 50px">
+<section id="movies" style="background-color: rgb(19, 23, 34); padding-top: 130px; padding-bottom: 50px">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
-                <div class="sidebar p-3" style="border: 1px solid rgb(212, 212, 212); background-color: rgb(22, 22, 22)">
+                <div class="sidebar p-3" style="border: 1px solid rgb(70, 69, 69); background-color: rgb(28, 33, 46)">
                     <div class="genre pb-3" style="color: white;">
-                        <h3 style="border-bottom: 1px solid rgb(212, 212, 212); padding-bottom: 5px; ">Categories</h3>
+                        <h3 style="border-bottom: 1px solid rgb(70, 69, 69); padding-bottom: 5px; ">Categories</h3>
                         
                         <div class="row">
                           <div class="col-md-6">
@@ -84,7 +84,7 @@
 
                     </div>
                     <div class="year" style="color: white">
-                        <h3 style="border-bottom: 1px solid rgb(212, 212, 212); padding-bottom: 5px">Movies by Year</h3>
+                        <h3 style="border-bottom: 1px solid rgb(70, 69, 69); padding-bottom: 5px">Movies by Year</h3>
                         <ul class="d-flex flex-wrap list-unstyled">
                           <li><label class="radio"> <input type="radio" name="year" value="" checked> <span style="color: #fff">1990</span> </label> </li>
                           <li><label class="radio"> <input type="radio" name="year" value=""> <span style="color: #fff">2000</span> </label> </li>
@@ -99,7 +99,7 @@
                         </ul> 
                     </div>
                     <div class="rate" style="color: white">
-                      <h3 style="border-bottom: 1px solid rgb(212, 212, 212); padding-bottom: 5px">Rating</h3>
+                      <h3 style="border-bottom: 1px solid rgb(70, 69, 69); padding-bottom: 5px">Rating</h3>
                       <ul class="list-unstyled">
                         <li class="ten-star mb-2">
                           <a href="#">
@@ -183,10 +183,10 @@
             </div>
             <div class="col-lg-8">
                 <div class="movies p-3" style="color: white; ">
-                    <h2 style="border-bottom: 1px solid rgb(212, 212, 212); padding-bottom: 5px">Movies</h2>
-                    <div class="row mt-4 pb-3" style="border-bottom: 1px solid whitesmoke">
+                    <h2 style="border-bottom: 1px solid rgb(70, 69, 69); padding-bottom: 5px">Movies</h2>
+                    <div class="row mt-4 pb-3" style="border-bottom: 1px solid rgb(70, 69, 69)">
                         <div class="col-md-3 mb-3">
-                            <div class="card bg-transparent border-light">
+                            <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
                               <a href="/movieDetail">
                                 <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                                 <div class="card-body bg-dark" style="color: #fff">
@@ -197,7 +197,7 @@
                               </div>
                         </div>
                         <div class="col-md-3 mb-3">
-                          <div class="card bg-transparent border-light">
+                          <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
                             <a href="/movieDetail">
                               <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                               <div class="card-body bg-dark" style="color: #fff">
@@ -208,7 +208,7 @@
                             </div>
                       </div>
                       <div class="col-md-3 mb-3">
-                        <div class="card bg-transparent border-light">
+                        <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
                           <a href="/movieDetail">
                             <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                             <div class="card-body bg-dark" style="color: #fff">
@@ -219,7 +219,7 @@
                           </div>
                     </div>
                     <div class="col-md-3 mb-3">
-                      <div class="card bg-transparent border-light">
+                      <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
                         <a href="/movieDetail">
                           <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                           <div class="card-body bg-dark" style="color: #fff">
@@ -230,7 +230,7 @@
                         </div>
                   </div>
                   <div class="col-md-3 mb-3">
-                    <div class="card bg-transparent border-light">
+                    <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
                       <a href="/movieDetail">
                         <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                         <div class="card-body bg-dark" style="color: #fff">
@@ -241,7 +241,7 @@
                       </div>
                 </div>
                 <div class="col-md-3 mb-3">
-                  <div class="card bg-transparent border-light">
+                  <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
                     <a href="/movieDetail">
                       <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                       <div class="card-body bg-dark" style="color: #fff">
@@ -252,7 +252,7 @@
                     </div>
               </div>
               <div class="col-md-3 mb-3">
-                <div class="card bg-transparent border-light">
+                <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
                   <a href="/movieDetail">
                     <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                     <div class="card-body bg-dark" style="color: #fff">
@@ -263,7 +263,7 @@
                   </div>
             </div>
             <div class="col-md-3 mb-3">
-              <div class="card bg-transparent border-light">
+              <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
                 <a href="/movieDetail">
                   <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                   <div class="card-body bg-dark" style="color: #fff">
