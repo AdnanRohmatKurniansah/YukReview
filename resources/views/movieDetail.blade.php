@@ -189,7 +189,7 @@
                     </div>
                     <div class="recentNews" style="color: white;">
                         <h3 style="border-bottom: 1px solid rgb(70, 69, 69); padding-bottom: 5px; ">Recent News</h3>
-                            <div class="card bg-dark mb-3 mt-3" style="color: white;border: 1px solid rgb(70, 69, 69)">
+                            <div class="card bg-dark mb-3 mt-3" style="color: white; border: 1px solid rgb(70, 69, 69)">
                               <div class="row g-0">
                                 <div class="col-md-4">
                                   <img src="/assets/img/news/news-1.jpg" style="min-height: 170px" class="img-fluid rounded-start" alt="...">

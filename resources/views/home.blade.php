@@ -17,7 +17,7 @@
             <div class="row mt-3">
                 <div class="col-md-4 mb-3">
                     <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
-                      <a href="">
+                      <a href="/movieDetail">
                         <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                         <div class="card-body bg-dark" style="color: #fff">
                           <h5 class="card-text">Avengers End Game</h5>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                   <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
-                    <a href="">
+                    <a href="/movieDetail">
                       <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                       <div class="card-body bg-dark" style="color: #fff">
                         <h5 class="card-text">Avengers End Game</h5>
@@ -39,7 +39,7 @@
               </div>
               <div class="col-md-4 mb-3">
                 <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
-                  <a href="">
+                  <a href="/movieDetail">
                     <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                     <div class="card-body bg-dark" style="color: #fff">
                       <h5 class="card-text">Avengers End Game</h5>
@@ -59,7 +59,7 @@
             <div class="row mt-3">
               <div class="col-md-4 mb-3">
                 <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
-                  <a href="">
+                  <a href="/movieDetail">
                     <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                     <div class="card-body bg-dark" style="color: #fff">
                       <h5 class="card-text">Avengers End Game</h5>
@@ -70,7 +70,7 @@
             </div>
             <div class="col-md-4 mb-3">
               <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
-                <a href="">
+                <a href="/movieDetail">
                   <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                   <div class="card-body bg-dark" style="color: #fff">
                     <h5 class="card-text">Avengers End Game</h5>
@@ -81,7 +81,7 @@
           </div>
           <div class="col-md-4 mb-3">
             <div class="card bg-transparent" style="border: 1px solid rgb(70, 69, 69)">
-              <a href="">
+              <a href="/movieDetail">
                 <img src="/assets/img/avenger.jpg" class="card-img-top" alt="...">
                 <div class="card-body bg-dark" style="color: #fff">
                   <h5 class="card-text">Avengers End Game</h5>

@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-<section id="movies" style="background-color: rgb(19, 23, 34); padding-top: 130px; padding-bottom: 50px">
+<section id="movies" style="background-color: rgb(19, 23, 34); padding-top: 100px; padding-bottom: 50px">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">

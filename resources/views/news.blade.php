@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-<section id="news" style="background-color: rgb(28, 33, 46); padding-top: 130px">
+<section id="news" style="background-color: rgb(28, 33, 46); padding-top: 100px">
   <div class="container">
       <div class="row">
           <div class="col-lg-8">
