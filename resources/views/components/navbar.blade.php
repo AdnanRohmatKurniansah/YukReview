@@ -16,7 +16,7 @@
       </ul>
     </nav><!-- .navbar -->
 
-    <a class="btn-sign" href="#">Sign In</a>
+    <a class="btn-sign" href="/auth/login">Sign In</a>
     <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
     <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
