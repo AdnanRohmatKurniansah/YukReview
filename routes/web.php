@@ -43,11 +43,17 @@ Route::prefix('auth')->group(function() {
     Route::post('/login', [AuthController::class, 'authenticate']);
     Route::get('/register', [AuthController::class, 'register']);
     Route::post('/register', [AuthController::class, 'store']);
-    Route::post('/logout', [AuthController::class, 'logout']);
+    
+    Route::middleware(['auth'])->group(function () {
+        Route::post('/logout', [AuthController::class, 'logout']);
+    });
 });
 
-
-Route::get('/dashboard/index', function () {
-    return view('dashboard.index');
-})->middleware('auth');
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['admin'])->group(function() {
+        Route::get('/dashboard', function () {
+            return view('dashboard.index');
+        });
+    });
+});
 

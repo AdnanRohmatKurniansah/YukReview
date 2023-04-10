@@ -15,8 +15,34 @@
         <li><a class="nav-link {{ Request::is('news') || Request::is('newsDetail') ? 'active' : '' }}" href="/news">News</a></li>
       </ul>
     </nav><!-- .navbar -->
-
-    <a class="btn-sign" href="/auth/login">Sign In</a>
+    @auth
+      <ul class="list-unstyled text-light">
+        <li class="nav-item dropdown mt-3">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Welcome back, {{ auth()->user()->username }}
+          </a>
+          <ul class="dropdown-menu  ">
+            @php
+                $user = Auth::user();
+            @endphp
+            @if ($user->role == 'admin')
+              <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i> My Dashboard</a></li>
+            @else
+              <li><a class="dropdown-item" href="#"><i class="bi bi-layout-text-sidebar-reverse"></i> My Profile</a></li>
+            @endif
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <form action="/auth/logout" method="post">
+                @csrf
+                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
+              </form>
+            </li>
+          </ul>
+        </li>  
+      </ul>
+    @else
+      <a class="btn-sign" href="/auth/login">Sign In</a>
+    @endauth
     <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
     <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 

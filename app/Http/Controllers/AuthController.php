@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -18,17 +19,17 @@ class AuthController extends Controller
 
     public function store(Request $request) {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
             'username' => ['required', 'min:3', 'max:255', 'unique:users'],
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:8|max:255' 
+            'password' => 'required|min:8|max:255',
+            'g-recaptcha-response' => 'recaptcha'
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         User::create($validatedData);   
 
-        return redirect('/auth/login')->with('success', 'Registration successfull! ');
+        return redirect('/auth/login')->with('toast_success', 'Registration successfully! ');
     }
 
     public function login() {
@@ -39,21 +40,29 @@ class AuthController extends Controller
     public function authenticate(Request $request) {
         $credentials = $request->validate([
             'email' => 'required|email:dns',
-            'password' => 'required'
+            'password' => 'required',
+            'g-recaptcha-response' => 'recaptcha'
         ]);
+    
+        $user = User::where('email', $credentials['email'])->first();
         
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            if (Auth::user()->role == 'admin') {
-                return redirect()->intended('/dashboard/index')->with('success', 'Login berhasil');
-            } else {
-                return redirect('/')->with('success', 'Login berhasil');
-            }
-
+        if (!$user) {
+            return back()->with('toast_error', 'Login Failed');
         }
-        return back()->with('loginError', 'Login failed!');
+    
+        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
+            $request->session()->regenerate();
+    
+            if ($user->role == 'admin') {
+                return redirect()->intended('/dashboard')->with('toast_success', 'Login successfully');
+            } else {
+                return redirect('/')->with('toast_success', 'Login successfully');
+            }
+    
+        }
+        return back()->with('toast_error', 'Login Failed');
     }
+    
     public function logout() {
         Auth::logout();
 
