@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\NewsController;
+use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +32,11 @@ Route::get('/movieDetail', function () {
 });
 
 Route::get('/news', function () {
-    return view('news');
+    return view('news', [
+        "title" => "News",
+        "news" =>  News::latest()->filter(request(['search', 'category']))
+            ->paginate(4)->withQueryString()
+    ]);
 });
 
 Route::get('/newsDetail', function () {
@@ -53,6 +62,16 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->group(function() {
         Route::get('/dashboard', function () {
             return view('dashboard.index');
+        });
+        Route::prefix('dashboard')->group(function () {
+            Route::get('/movies/genres/checkSlug', [GenreController::class, 'checkSlug']);
+            Route::get('/movies/checkSlug', [MovieController::class, 'checkSlug']);
+            Route::get('/news/checkSlug', [NewsController::class, 'checkSlug']);
+            Route::get('/news/categories/checkSlug', [CategoryController::class, 'checkSlug']);
+            Route::resource('/movies/genres', GenreController::class)->except('show');
+            Route::resource('/movies', MovieController::class)->except('show');
+            Route::resource('/news/categories', CategoryController::class)->except('show');
+            Route::resource('/news', NewsController::class)->except('show');
         });
     });
 });
