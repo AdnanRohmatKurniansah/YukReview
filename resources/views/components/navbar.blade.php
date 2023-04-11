@@ -12,7 +12,7 @@
       <ul>
         <li><a class="nav-link {{ Request::is('movies') || Request::is('movieDetail') ? 'active' : '' }}" href="/movies">Movies</a></li>
         <li><a class="nav-link {{ Request::is('toplists') ? 'active' : '' }}" href="/toplists">Top Lists</a></li>
-        <li><a class="nav-link {{ Request::is('news') || Request::is('newsDetail') ? 'active' : '' }}" href="/news">News</a></li>
+        <li><a class="nav-link {{ Request::is('news*') ? 'active' : '' }}" href="/news">News</a></li>
       </ul>
     </nav><!-- .navbar -->
     @auth
@@ -21,7 +21,7 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Welcome back, {{ auth()->user()->username }}
           </a>
-          <ul class="dropdown-menu  ">
+          <ul class="dropdown-menu">
             @php
                 $user = Auth::user();
             @endphp

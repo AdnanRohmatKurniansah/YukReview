@@ -35,12 +35,15 @@ Route::get('/news', function () {
     return view('news', [
         "title" => "News",
         "news" =>  News::latest()->filter(request(['search', 'category']))
-            ->paginate(4)->withQueryString()
+            ->paginate(3)->withQueryString()
     ]);
 });
 
-Route::get('/newsDetail', function () {
-    return view('newsDetail');
+Route::get('/news/{news:slug}', function (News $news) {
+    return view('newsDetail', [
+        'title' => "News Detail",
+        'news' => $news,
+    ]);
 });
 
 Route::get('/toplists', function () {
@@ -64,6 +67,8 @@ Route::middleware(['auth'])->group(function () {
             return view('dashboard.index');
         });
         Route::prefix('dashboard')->group(function () {
+            Route::get('/change-password', [AuthController::class, 'show'])->name('change-password');
+            Route::post('/change-password', [AuthController::class, 'updatePassword'])->name('update-password');
             Route::get('/movies/genres/checkSlug', [GenreController::class, 'checkSlug']);
             Route::get('/movies/checkSlug', [MovieController::class, 'checkSlug']);
             Route::get('/news/checkSlug', [NewsController::class, 'checkSlug']);

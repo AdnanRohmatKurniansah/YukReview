@@ -9,7 +9,7 @@
           <div class="card bg-dark mb-5" style="color: white;border: 1px solid rgb(70, 69, 69)">
               <img src="{{ asset('storage/' . $news[0]->image) }}" class="card-img-top" alt="..." style="max-height: 350px">
               <div class="card-body">
-                <a href="/newsDetail/{{ $news[0]->slug }}"><h5 class="card-title">{{ $news[0]->title }}</h5></a>
+                <a href="/news/{{ $news[0]->slug }}"><h5 class="card-title">{{ $news[0]->title }}</h5></a>
                 <p class="card-text"><a href="/news?category={{ $news[0]->category->slug }}">{{ $news[0]->category->name }}</a>  . <small style="color: gainsboro">{{ $news[0]->created_at->format('d, M Y') }}</small></p>
                 <p class="excerpt card-text">{{ $news[0]->excerpt }}</p>
               </div>
@@ -22,7 +22,7 @@
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
-                      <a href="/newsDetail/{{ $nws->slug }}"><h5 class="card-title">{{ $nws->title }}</h5></a>
+                      <a href="/news/{{ $nws->slug }}"><h5 class="card-title">{{ $nws->title }}</h5></a>
                       <p class="card-text"><a href="/news?category={{ $nws->category->slug }}">{{ $nws->category->name }}</a>  . <small style="color: gainsboro">{{ $nws->created_at->format('d, M Y') }}</small></p>
                     <p class="excerpt card-text">{{ $nws->excerpt }}.</p>
                     </div>
@@ -30,15 +30,22 @@
                 </div>
               </div>
             @endforeach
+            <div class="d-flex justify-content-center">
+              {{ $news->links() }}
+              </div>
       </div>
         @else
-          <p>No Movies Found</p>
+          <div class="col-lg-8">
+            <h1 class="text-light d-flex justify-content-center" style="margin-top: 200px">No Movies Found</h1>
+          </div>
         @endif
         <div class="col-lg-4 mt-3">
-          <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="button-addon2">
-              <button class="btn btn-primary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
-            </div>
+          <form action="/news">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="search" placeholder="Search..." aria-label="Recipient's username" value="{{ request('search') }}">
+                <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+              </div>
+          </form>
           <div class="hotNews pb-3" style="color: #fff;">
               <h3 style="border-bottom: 1px solid rgb(70, 69, 69); padding-bottom: 5px; ">What's hot</h3>
               <div class="card bg-dark mb-3 mt-3" style="color: white;border: 1px solid rgb(70, 69, 69)">
@@ -118,25 +125,7 @@
                   </div>
               </div>
           </div>
-          <div class="paginate d-flex justify-content-center mt-4 pb-5">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination ">
-                <li class="page-item">
-                  <a class="page-link bg-dark text-light" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link bg-dark text-light" href="#">1</a></li>
-                <li class="page-item"><a class="page-link bg-dark text-light" href="#">2</a></li>
-                <li class="page-item"><a class="page-link bg-dark text-light" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link bg-dark text-light" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
+
       </div>
 </section>
 @endsection

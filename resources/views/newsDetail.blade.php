@@ -6,22 +6,21 @@
       <div class="row">
           <div class="col-lg-8">
               <div class="card bg-dark mb-5" style="color: white;border: 1px solid rgb(70, 69, 69)">
-                  <img src="/assets/img/news/news-1.jpg" class="card-img-top" alt="..." style="max-height: 350px">
+                  <img src="{{ asset('storage/' . $news->image) }}" class="card-img-top" alt="..." style="max-height: 350px">
                   <div class="card-body">
-                    <a href="/newsDetail"><h5 class="card-title">World Starts With Word Peace</h5></a>
-                    <p class="card-text"><a href="">TV Rumors</a>  . <small style="color: gainsboro">February 5, 2019</small></p>
-                    <p class="excerpt card-text">Praesent iaculis, purus ac vehicula mattis, arcu lorem blandit nisl, non laoreet dui mi eget elit. Donec porttitor ex vel augue maximus luctus. Vivamus finibus nibh eu nunc volutpat suscipit.</p>
-                    <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste cumque eum facilis? Harum assumenda natus rerum. Ut voluptas quae illo reiciendis id? Optio quos eum sint iste nulla velit quasi, corporis reiciendis sequi, ipsam excepturi accusantium fuga asperiores quibusdam provident possimus pariatur laboriosam ratione incidunt non atque harum. Modi libero nesciunt saepe placeat, tempora optio pariatur in error sit maiores voluptates cum dicta, rem numquam esse veniam debitis cupiditate. Sit veniam consequuntur sed, praesentium sint aliquid dignissimos, perferendis odio non rem eius labore nostrum corporis neque saepe voluptates quisquam! Non, doloribus iure! Odit, magni eius! Velit asperiores eveniet a placeat.</p>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum neque non ab, ipsum, iusto enim magni voluptatibus at consectetur esse architecto reiciendis aliquid harum fuga iure saepe explicabo beatae voluptate quisquam a maxime veritatis. Delectus ipsum ullam nam mollitia fugit dolores eius similique dicta laborum id. Voluptatem ipsa vero voluptatum.</p>
-                    <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste cumque eum facilis? Harum assumenda natus rerum. Ut voluptas quae illo reiciendis id? Optio quos eum sint iste nulla velit quasi, corporis reiciendis sequi, ipsam excepturi accusantium fuga asperiores quibusdam provident possimus pariatur laboriosam ratione incidunt non atque harum. Modi libero nesciunt saepe placeat, tempora optio pariatur in error sit maiores voluptates cum dicta, rem numquam esse veniam debitis cupiditate. Sit veniam consequuntur sed, praesentium sint aliquid dignissimos, perferendis odio non rem eius labore nostrum corporis neque saepe voluptates quisquam! Non, doloribus iure! Odit, magni eius! Velit asperiores eveniet a placeat.</p>
+                    <a href="/news/{{ $news->slug }}"><h5 class="card-title">{{ $news->title }}</h5></a>
+                    <p class="card-text"><a href="/news?category={{ $news->category->slug }}">{{ $news->category->name }}</a>  . <small style="color: gainsboro">{{ $news->created_at->format('d, M Y') }}</small></p>
+                    <p class="card-text">{!! $news->body !!}</p>
                   </div>
                 </div>
           </div>
           <div class="col-lg-4 mt-3">
+            <form action="/news">
               <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                  <button class="btn btn-primary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+                  <input type="text" class="form-control" name="search" placeholder="Search..." aria-label="Recipient's username" value="{{ request('search') }}">
+                  <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
                 </div>
+            </form>
               <div class="hotNews pb-3" style="color: #fff;">
                   <h3 style="border-bottom: 1px solid rgb(70, 69, 69); padding-bottom: 5px; ">What's hot</h3>
                   <div class="card bg-dark mb-3 mt-3" style="color: white;border: 1px solid rgb(70, 69, 69)">
@@ -100,25 +99,6 @@
                             </div>
                       </div>
                   </div>
-              </div>
-              <div class="paginate d-flex justify-content-center mt-4 pb-5">
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination ">
-                    <li class="page-item">
-                      <a class="page-link bg-dark text-light" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                      </a>
-                    </li>
-                    <li class="page-item"><a class="page-link bg-dark text-light" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link bg-dark text-light" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link bg-dark text-light" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link bg-dark text-light" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
               </div>
           </div>
 </section>

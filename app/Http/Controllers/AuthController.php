@@ -72,4 +72,28 @@ class AuthController extends Controller
     
         return redirect('/');
     }
+    public function show() {
+        return view('auth.update-password');
+    }
+    public function updatePassword(Request $request) {
+        //validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+
+        //match The Old Password
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with('toast_error', "Old Password Doesn't match!");
+        }
+
+
+        //update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with('toast_success', "Password Changed Successfuly!");
+    }
 }
