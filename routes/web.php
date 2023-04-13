@@ -6,6 +6,8 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Genre;
+use App\Models\Movie;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
@@ -25,11 +27,19 @@ Route::get('/', function () {
 });
 
 Route::get('/movies', function () {
-    return view('movies');
+    return view('movies', [
+        'movies' => Movie::latest()->paginate(16),
+        'genres' => Genre::all()
+    ]);
 });
 
-Route::get('/movieDetail', function () {
-    return view('movieDetail');
+Route::get('/movies/{movie:slug}', function (Movie $movie) {
+    return view('movieDetail', [
+        'title' => "Movies",
+        'movie' => $movie,
+        'news' => News::latest()->paginate(2),
+        "movies" =>  Movie::orderBy('rating', 'desc')->paginate(3)
+    ]);
 });
 
 Route::get('/news', function () {

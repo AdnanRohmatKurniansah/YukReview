@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('slug');
             // $table->foreignId('genre_id');
             $table->string('duration');
-            $table->string('synopsis');
-            $table->string('poster');
+            $table->text('synopsis');
+            $table->text('poster');
             $table->string('trailer');
             $table->integer('rating');
             $table->timestamps();

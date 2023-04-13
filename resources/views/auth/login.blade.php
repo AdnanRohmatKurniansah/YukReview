@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="row justify-content-center mt-5">
-    <div class="col-lg-3" style="border: 1px solid rgb(204, 201, 201); padding: 20px; margin-top: 80px;  box-shadow: 2px 2px 2px rgb(224, 221, 221)">
+    <div class="col-md-3" style="border: 1px solid rgb(204, 201, 201); padding: 20px; margin-top: 80px;  box-shadow: 2px 2px 2px rgb(224, 221, 221)">
 
-        <main class="form-signin w-100 m-auto">
+        <main class="form-signin">
           <h1 class="h3 mb-3 fw-normal d-flex justify-content-center">Please Login</h1>
       
             <form action="/auth/login" method="post">

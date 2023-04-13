@@ -32,7 +32,7 @@
             @endforeach
             <div class="d-flex justify-content-center">
               {{ $news->links() }}
-              </div>
+            </div>
       </div>
         @else
           <div class="col-lg-8">
