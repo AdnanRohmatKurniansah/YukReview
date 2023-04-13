@@ -10,14 +10,14 @@
                 <h5 class="m-0 font-weight-bold text-primary">Profile</h5>
             </div>
             <div class="container">
-              <form action="" method="post" enctype="multipart/form-data" class="m-3">
+              <form action="{{ route('update-profile') }}" method="post" enctype="multipart/form-data" class="m-3">
                  @csrf
 
                  <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" 
-                    name="username" disabled autofocus value="{{ old('username', $user->username) }}">
-                    @error('username')
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" 
+                    name="name" required autofocus value="{{ old('name', $users->name) }}">
+                    @error('name')
                         <div class="invalid-feedback">
                           {{ $message }}
                         </div>
@@ -26,7 +26,7 @@
                   <div class="mb-3">
                       <label for="email" class="form-label">Email</label>
                       <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" 
-                      name="email" disabled value="{{ old('email', $user->email) }}">
+                      name="email" disabled value="{{ old('email', $users->email) }}">
                       @error('email')
                           <div class="invalid-feedback">
                             {{ $message }}
@@ -34,9 +34,12 @@
                       @enderror
                     </div>
                     <div class="mb-3">
-                      <label for="birth" class="form-label">Birth</label>
-                      <input type="text" class="form-control @error('birth') is-invalid @enderror" id="birth" 
-                      name="birth" required autofocus value="{{ old('birth', $user->birth) }}">
+                      <label for="birth" class="form-label">Birth</label><br>
+                      @if ($users->birth !== null)  
+                        <label id="birth">{{ $users->birth }}</label>
+                      @endif
+                      <input type="datetime-local" class="form-control @error('birth') is-invalid @enderror" id="datetimepicker" 
+                      name="birth" autofocus value="{{ old('birth') }}">
                       @error('birth')
                           <div class="invalid-feedback">
                             {{ $message }}
@@ -44,16 +47,16 @@
                       @enderror
                     </div>
                   <div class="mb-3">
-                    <label for="profile" class="form-label">Profile</label>
-                    <input type="hidden" name="oldProfile" value="{{ $movie->profile }}">
-                      @if ($user->profile)
-                        <img src="{{ asset('storage/' . $user->profile) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                    <label for="profilePic" class="form-label">Profile Picture</label>
+                    <input type="hidden" name="oldProfilePic" value="{{ $users->profilePic }}">
+                      @if ($users->profilePic)
+                        <img src="{{ asset('storage/' . $users->profilePic) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
                       @else
                         <img class="img-preview img-fluid mb-3 col-sm-5">
                       @endif
-                  <input class="form-control @error('profile') is-invalid @enderror" type="file" id="profile"
-                    name="profile" onchange="previewProfile()">
-                  @error('profile')
+                  <input class="form-control @error('profilePic') is-invalid @enderror" type="file" id="profilePic"
+                    name="profilePic" onchange="previewProfilePic()">
+                  @error('profilePic')
                       <div class="invalid-feedback">
                         {{ $message }}
                       </div>
@@ -67,5 +70,25 @@
         </div>
     </div>
 </div>
+
+<script>
+
+function previewProfilePic() {
+    const profilePic = document.querySelector('#profilePic');
+    const imgPreview = document.querySelector('.img-preview');
+    imgPreview.style.display = 'block';
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(profilePic.files[0]);
+    oFReader.onload = function(oFREvent) {
+      imgPreview.src = oFREvent.target.result;
+    }
+  }
+
+  config = {
+      enableTime: true,
+      dateFormat: 'Y-m-d',
+  }
+  flatpickr("input[type=datetime-local]", config);
+</script>
 
 @endsection

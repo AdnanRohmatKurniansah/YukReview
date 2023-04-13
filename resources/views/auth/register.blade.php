@@ -9,9 +9,9 @@
             <form action="/auth/register" method="post">
               @csrf
               <div class="form-floating">
-                <input type="text" class="form-control mb-3  @error('username') is-invalid @enderror" name="username" id="username" placeholder="Username" required value="{{ old('username') }}">
-                <label for="username">Username</label>
-                @error('username')
+                <input type="text" class="form-control mb-3  @error('name') is-invalid @enderror" name="name" id="name" placeholder="name" required value="{{ old('name') }}">
+                <label for="name">Name</label>
+                @error('name')
                 <div class="invalid-feedback">
                     {{ $message }}
                   </div>            

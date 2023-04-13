@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProfileController;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
@@ -61,14 +62,19 @@ Route::prefix('auth')->group(function() {
     });
 });
 
+
 Route::middleware(['auth'])->group(function () {
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'show'])->name('change-profile');
+        Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('update-profile');
+        Route::get('/change-password', [AuthController::class, 'show'])->name('change-password');
+        Route::post('/change-password', [AuthController::class, 'updatePassword'])->name('update-password');
+    });
     Route::middleware(['admin'])->group(function() {
         Route::get('/dashboard', function () {
             return view('dashboard.index');
         });
         Route::prefix('dashboard')->group(function () {
-            Route::get('/change-password', [AuthController::class, 'show'])->name('change-password');
-            Route::post('/change-password', [AuthController::class, 'updatePassword'])->name('update-password');
             Route::get('/movies/genres/checkSlug', [GenreController::class, 'checkSlug']);
             Route::get('/movies/checkSlug', [MovieController::class, 'checkSlug']);
             Route::get('/news/checkSlug', [NewsController::class, 'checkSlug']);

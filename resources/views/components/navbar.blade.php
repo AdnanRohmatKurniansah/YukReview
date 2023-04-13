@@ -19,7 +19,7 @@
       <ul class="list-unstyled text-light">
         <li class="nav-item dropdown mt-3">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Welcome back, {{ auth()->user()->username }}
+           <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
           </a>
           <ul class="dropdown-menu">
             @php
@@ -28,7 +28,8 @@
             @if ($user->role == 'admin')
               <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i> My Dashboard</a></li>
             @else
-              <li><a class="dropdown-item" href="#"><i class="bi bi-layout-text-sidebar-reverse"></i> My Profile</a></li>
+              <li><a class="dropdown-item" href="{{ route('change-profile') }}"><i class="bi bi-person-circle"></i> My Profile</a></li>
+              <li><a class="dropdown-item" href="{{ route('change-password') }}"><i class="bi bi-gear"></i> Change Password</a></li>
             @endif
             <li><hr class="dropdown-divider"></li>
             <li>

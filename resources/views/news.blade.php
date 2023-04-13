@@ -36,7 +36,7 @@
       </div>
         @else
           <div class="col-lg-8">
-            <h1 class="text-light d-flex justify-content-center" style="margin-top: 200px">No Movies Found</h1>
+            <h1 class="text-light d-flex justify-content-center" style="margin-top: 200px">News Not Found</h1>
           </div>
         @endif
         <div class="col-lg-4 mt-3">
