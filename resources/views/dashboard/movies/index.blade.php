@@ -27,7 +27,8 @@
                           <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $movie->title }}</td>
-                            <td>{{ $movie->genre->name }}</td>
+                            <td>{{ implode(', ', $movie->genres->pluck('name')->toArray()) }}</td>
+                            <td>{{ $movie->rating }}</td>
                             <td class="d-flex">
                                 <a href="/dashboard/movies/{{ $movie->slug }}/edit" class="badge bg-info mr-1" style="font-size: 18px"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <form action="/dashboard/movies/{{ $movie->slug }}" method="post">

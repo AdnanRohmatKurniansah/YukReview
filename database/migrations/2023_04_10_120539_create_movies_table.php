@@ -15,13 +15,19 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->foreignId('genre_id');
+            // $table->foreignId('genre_id');
             $table->string('duration');
             $table->string('synopsis');
             $table->string('poster');
             $table->string('trailer');
             $table->integer('rating');
             $table->timestamps();
+        });
+
+        Schema::create('genre_movie', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('genre_id')->constrained();
+            $table->foreignId('movie_id')->constrained();
         });
     }
 
@@ -30,6 +36,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('genre_movie');
         Schema::dropIfExists('movies');
     }
 };

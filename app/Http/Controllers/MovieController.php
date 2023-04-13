@@ -26,7 +26,7 @@ class MovieController extends Controller
     public function create()
     {
         return view('dashboard.movies.create', [
-            'genres' => Genre::all()
+            'genres' => Genre::orderBy('name', 'asc')->get()->pluck('name', 'id')
         ]);
     }
 
@@ -38,7 +38,8 @@ class MovieController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug'  => 'required|unique:movies',
-            'genre_id' => 'required',
+            // 'genre_id' => 'required',
+            'genre_ids' => ['required', 'array'],
             'duration' => 'required',
             'trailer' => 'required',
             'poster' => 'image|file|max:2048',
@@ -51,7 +52,9 @@ class MovieController extends Controller
         } // jika tdk ada maka gunakan image lama
 
 
-        Movie::create($validatedData);
+        if ($movie = Movie::create($validatedData)) {
+            $movie->genres()->sync($validatedData['genre_ids']);
+        }
         
         return redirect('/dashboard/movies')->with('success', 'New Movie has been added!');
     }
@@ -71,7 +74,7 @@ class MovieController extends Controller
     {
         return view('dashboard.movies.edit', [
             'movie' => $movie,
-            'genres' => Genre::all()
+            'genres' => Genre::orderBy('name', 'asc')->get()->pluck('name', 'id')
         ]);
     }
 
@@ -79,53 +82,60 @@ class MovieController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Movie $movie)
-    {
-        $rules = [
-            'title' => 'required|max:255',
-            'genre_id' => 'required',
-            'duration' => 'required',
-            'trailer' => 'required',
-            'poster' => 'image|file|max:2048 ',
-            'synopsis' => 'required',
-            'rating' => 'required'
-        ]; 
-        
-        if($request->slug != $movie->slug) {
-          $rules['slug'] = 'required|unique:movies';
-        }
-
-        $validatedData = $request->validate($rules);
-
-        if ($request->file('poster')) {
-            if ($request->oldPoster) {
-                Storage::delete($request->oldPoster);
-            }
-            $validatedData['poster'] = $request->file('poster')->store('movie-images');
-        }
-
-        if($request->file('poster')) {
-            $validatedData['poster'] = $request->file('poster')->store('movie-images');
-        } 
-        
-
-        Movie::where('id', $movie->id)
-             ->update($validatedData);
-        
-        return redirect('/dashboard/movies')->with('success', 'Movie has been updated!');
+{
+    $rules = [
+        'title' => 'required|max:255',
+        'genre_ids' => ['required', 'array'],
+        'duration' => 'required',
+        'trailer' => 'required',
+        'poster' => 'image|file|max:2048',
+        'synopsis' => 'required',
+        'rating' => 'required'
+    ]; 
+    
+    if($request->slug != $movie->slug) {
+        $rules['slug'] = 'required|unique:movies';
     }
+
+    $validatedData = $request->validate($rules);
+
+    if ($request->file('poster')) {
+        if ($request->oldPoster) {
+            Storage::delete($request->oldPoster);
+        }
+        $validatedData['poster'] = $request->file('poster')->store('movie-images');
+    }
+
+    if ($movie->update($validatedData)) {
+        $movie->genres()->sync($validatedData['genre_ids']);
+        return redirect('/dashboard/movies')->with('success', 'Movie has been updated!');
+    } else {
+        return redirect('/dashboard/movies')->with('toast_error', 'Failed to update movie!');
+    }
+}
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Movie $movie)
-    {
-        if ($movie->image) {
-            Storage::delete($movie->poster);
-        }
-        
-        Movie::destroy($movie->id);
-        return redirect('/dashboard/movies')->with('success', 'Movie has been deleted!');
+{   
+    $movieGenres = $movie->genres;
+    
+    foreach ($movieGenres as $genre) {
+        $genre->movies()->detach($movie->id);
     }
+
+    if ($movie->poster) {
+        Storage::delete($movie->poster);
+    }
+    
+    if ($movie->delete()) {
+        return redirect('/dashboard/movies')->with('success', 'Movie has been deleted!');
+    } else {
+        return redirect('/dashboard/movies')->with('toast_error', 'Failed to delete movie!');
+    }
+}
+
     public function checkSlug(Request $request)
     {
         $slug = SlugService::createSlug(Movie::class, 'slug', $request->title);

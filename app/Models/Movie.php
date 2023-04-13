@@ -12,9 +12,9 @@ class Movie extends Model
 
     protected $guarded = ['id'];
 
-    public function genre()
+    public function genres()
     {
-        return $this->belongsTo(Genre::class);
+        return $this->belongsToMany(Genre::class);
     }
 
     public function getRouteKeyName()

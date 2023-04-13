@@ -32,17 +32,16 @@
                             @enderror
                           </div>
                           <div class="mb-3">
-                            <label for="genre_id" class="form-label">Genre</label>
-                            <select class="form-select" name="genre_id">
-                              @foreach ($genres as $genre)
-                                @if(old('genre_id') == $genre->id)
-                                  <option value="{{ $genre->id }}" selected>{{ $genre->name }}</option>
-                                @else
-                                   <option value="{{ $genre->id }}">{{ $genre->name }}</option>
-                                @endif
-                              @endforeach
-                            </select>
-                          </div> 
+                            <label class="form-label">Genre</label>
+                            @foreach ($genres as $genreID => $genreName)
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="genre_ids[]" value="{{ $genreID }}">
+                                <label class="form-check-label">
+                                  {{ $genreName }}
+                                </label>
+                              </div>
+                            @endforeach
+                          </div>
                           <div class="mb-3">
                             <label for="duration" class="form-label">Duration</label>
                             <input type="text" class="form-control @error('duration') is-invalid @enderror" id="duration" 
