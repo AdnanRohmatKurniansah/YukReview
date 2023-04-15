@@ -35,11 +35,11 @@
                     </div>
                     <div class="mb-3">
                       <label for="birth" class="form-label">Birth</label><br>
-                      @if ($users->birth !== null)  
+                      {{-- @if ($users->birth !== null)  
                         <label id="birth">{{ $users->birth }}</label>
-                      @endif
-                      <input type="datetime-local" class="form-control @error('birth') is-invalid @enderror" id="datetimepicker" 
-                      name="birth" autofocus value="{{ old('birth') }}">
+                      @endif --}}
+                      <input type="date" class="form-control @error('birth') is-invalid @enderror" 
+                      name="birth" autofocus value="{{ old('birth', $users->birth) }}">
                       @error('birth')
                           <div class="invalid-feedback">
                             {{ $message }}
@@ -83,12 +83,6 @@ function previewProfilePic() {
       imgPreview.src = oFREvent.target.result;
     }
   }
-
-  config = {
-      enableTime: true,
-      dateFormat: 'Y-m-d',
-  }
-  flatpickr("input[type=datetime-local]", config);
 </script>
 
 @endsection

@@ -9,63 +9,18 @@
               <thead>
                 <tr>
                   <th scope="col" class="p-4">#</th>
-                  <th scope="col" class="p-4">Name</th>
+                  <th scope="col" class="p-4">Title</th>
                   <th scope="col" class="p-4">Rate</th>
                 </tr>
               </thead>
               <tbody>
-                <tr> 
-                  <th scope="row" class="p-4">1</th>
-                  <td class="p-4"><a href="/movieDetail">AVENGER END GAME</a></td>
-                  <td class="p-4">8,5</td>
-                </tr>
-                <tr>
-                  <th scope="row" class="p-4">2</th>
-                  <td class="p-4"><a href="/movieDetail">SPIDERMAN 3</a></td>
-                  <td class="p-4">8,5</td>
-                </tr>
-                <tr>
-                  <th scope="row" class="p-4">3</th>
-                  <td class="p-4"><a href="/movieDetail">AVENGER END GAME</a></td>
-                  <td class="p-4">8,5</td>
-                </tr>
-                <tr class="p-4">
-                  <th scope="row" class="p-4">4</th>
-                  <td class="p-4"><a href="/movieDetail">SPIDERMAN 3</a></td>
-                  <td class="p-4">8,5</td>
-                </tr>
-                <tr class="p-4">
-                  <th scope="row" class="p-4">5</th>
-                  <td class="p-4"><a href="/movieDetail">AVENGER END GAME</a></td>
-                  <td class="p-4">8,5</td>
-                </tr>
-                <tr class="p-4">
-                  <th scope="row" class="p-4">6</th>
-                  <td class="p-4"><a href="/movieDetail">SPIDERMAN 3</a></td>
-                  <td class="p-4">8,5</td>
-                </tr>
-                <tr class="p-4">
-                  <th scope="row" class="p-4">7</th>
-                  <td class="p-4"><a href="/movieDetail">AVENGER END GAME</a></td>
-                  <td class="p-4">8,5</td>
-                </tr>
-                <tr class="p-4">
-                  <th scope="row" class="p-4">8</th>
-                  <td class="p-4"><a href="/movieDetail">SPIDERMAN 3</a></td>
-                  <td class="p-4">8,5</td>
-                </tr>
-                <tr class="p-4">
-                  <th scope="row" class="p-4">9</th>
-                  <td class="p-4"><a href="/movieDetail">AVENGER END GAME</a></td>
-                  <td class="p-4">8,5</td>
-                </tr>
-                <tr class="p-4">
-                  <th scope="row" class="p-4">10</th>
-                  <td class="p-4"><a href="/movieDetail">SPIDERMAN 3</a></td>
-                  <td class="p-4">8,5</td>
-                </tr>
-                
-               
+                @foreach ($movies as $movie) 
+                  <tr> 
+                    <th scope="row" class="p-4">{{ $loop->iteration }}</th>
+                    <td class="p-4"><a href="/movies/{{ $movie->slug }}">{{ $movie->title }}</a></td>
+                    <td class="p-4">{{ $movie->rating }}</td>
+                  </tr>
+                @endforeach
               </tbody>
             </table>
         </div>

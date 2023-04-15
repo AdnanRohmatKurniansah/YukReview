@@ -43,7 +43,7 @@
           <form action="/news">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="search" placeholder="Search..." aria-label="Recipient's username" value="{{ request('search') }}">
-                <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+                <button class="btn btn-dark" type="submit"><i class="bi bi-search"></i></button>
               </div>
           </form>
           <div class="hotNews pb-3" style="color: #fff;">
@@ -78,50 +78,23 @@
                   </div>
                   <div class="toplists pb-3" style="color: white;">
                     <h3 style="border-bottom: 1px solid rgb(70, 69, 69) ; padding-bottom: 5px; ">Top List</h3>
-                        <div class="card bg-dark mb-3 mt-3" style="color: white; border: 1px solid rgb(70, 69, 69)">
-                            <div class="row g-0">
-                              <div class="col-md-4">
-                                <img src="/assets/img/avenger.jpg" style="min-height: 150px" class="img-fluid rounded-start" alt="...">
-                              </div>
-                              <div class="col-md-8">
-                                <div class="card-body">
-                                  <a href="/movieDetail"><h5 class="card-title">Avenger End Game</h5></a>
-                                  <p style="font-size: 14px"><i class="bi bi-stopwatch"></i> 02 hours 30 minutes</p>
-                                  <p style="font-size: 15px">Comic, Magic</p>
-                                </div>
-                              </div>
+                    @foreach ($movies as $movie)
+                    <div class="card bg-dark mb-3 mt-3" style="color: white; border: 1px solid rgb(70, 69, 69)">
+                        <div class="row g-0">
+                          <div class="col-md-4">
+                            <img src="{{ asset('storage/' . $movie->poster) }}" style="min-height: 150px" class="img-fluid rounded-start" alt="...">
+                          </div>
+                          <div class="col-md-8">
+                            <div class="card-body">
+                              <a href="/movies/{{ $movie->slug }}"><h5 class="card-title">{{ $movie->title }}</h5></a>
+                              <p style="font-size: 14px"><i class="bi bi-stopwatch"></i> {{ $movie->duration }}</p>
+                              <p style="font-size: 15px">{{ implode(', ', $movie->genres->pluck('name')->toArray()) }}</p>
                             </div>
                           </div>
-                        <div class="card bg-dark mb-3 mt-3" style="color: white;border: 1px solid rgb(70, 69, 69)">
-                            <div class="row g-0">
-                              <div class="col-md-4">
-                                <img src="/assets/img/avenger.jpg" style="min-height: 150px" class="img-fluid rounded-start" alt="...">
-                              </div>
-                              <div class="col-md-8">
-                                <div class="card-body">
-                                  <a href="/movieDetail"><h5 class="card-title">Avenger End Game</h5></a>
-                                  <p style="font-size: 14px"><i class="bi bi-stopwatch"></i> 02 hours 30 minutes</p>
-                                  <p style="font-size: 15px">Comic, Magic</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        <div class="card bg-dark mb-3 mt-3" style="color: white;border: 1px solid rgb(70, 69, 69)">
-                            <div class="row g-0">
-                              <div class="col-md-4">
-                                <img src="/assets/img/avenger.jpg" style="min-height: 150px" class="img-fluid rounded-start" alt="...">
-                              </div>
-                              <div class="col-md-8">
-                                <div class="card-body">
-                                  <a href="/movieDetail"><h5 class="card-title">Avenger End Game</h5></a>
-                                  <p style="font-size: 14px"><i class="bi bi-stopwatch"></i> 02 hours 30 minutes</p>
-                                  <p style="font-size: 15px">Comic, Magic</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        
                         </div>
+                      </div>
+                  @endforeach
+                      </div>
                   </div>
               </div>
           </div>

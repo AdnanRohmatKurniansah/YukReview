@@ -13,18 +13,13 @@ class ProfileController extends Controller
             'users' => User::where('id', auth()->user()->id)->first()
         ]);
     }
-    public function updateProfile(Request $request, User $user) {
-        $rules = [
+    public function updateProfile(Request $request) {
+        $validatedData = $request->validate([
             'name' => 'required|max:255',
             'profilePic' => 'image|file|max:2048',
-        ];  
+            'birth' => 'required'
+        ]);
 
-        if(!$user->birth) {
-            $rules['birth'] = 'required';
-        }
-
-        $validatedData = $request->validate($rules);
-        
         
         if ($request->file('profilePic')) {
             if ($request->oldProfilePic) {

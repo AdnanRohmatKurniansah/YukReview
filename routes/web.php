@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\News;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,13 +24,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        'movies' => Movie::latest()->paginate(3)
+    ]);
 });
 
 Route::get('/movies', function () {
     return view('movies', [
-        'movies' => Movie::latest()->paginate(16),
-        'genres' => Genre::all()
+        'movies' => Movie::latest()->filter(request(['search', 'filterGenre']))->paginate(16),
+        'genres' => Genre::all(), 
     ]);
 });
 
@@ -46,7 +49,8 @@ Route::get('/news', function () {
     return view('news', [
         "title" => "News",
         "news" =>  News::latest()->filter(request(['search', 'category']))
-            ->paginate(3)->withQueryString()
+            ->paginate(3)->withQueryString(),
+        "movies" =>  Movie::orderBy('rating', 'desc')->paginate(3)
     ]);
 });
 
@@ -54,11 +58,14 @@ Route::get('/news/{news:slug}', function (News $news) {
     return view('newsDetail', [
         'title' => "News Detail",
         'news' => $news,
+        "movies" =>  Movie::orderBy('rating', 'desc')->paginate(3)
     ]);
 });
 
 Route::get('/toplists', function () {
-    return view('toplists');
+    return view('toplists', [
+        "movies" =>  Movie::orderBy('rating', 'desc')->paginate(10)
+    ]);
 });
 
 Route::prefix('auth')->group(function() {

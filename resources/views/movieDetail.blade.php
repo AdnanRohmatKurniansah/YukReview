@@ -22,8 +22,12 @@
                             <p>Duration: <i class="bi bi-stopwatch"></i> {{ $movie->duration }}</p>
                             <ul class="list-unstyled">
                                 <li><b>Genre :</b> {{ implode(', ', $movie->genres->pluck('name')->toArray()) }}</li>
-                                <li><b>Rating :</b> {{ $movie->rating }}</li>
+                                <li><b>Rating :</b> {{ $movie->rating }}/10</li>
                             </ul>
+                        </div>
+                        <div class="rate">
+                          <h5 class="mt-5">Your Rating</h5>
+                          <button type="button" class="btn btn-dark"><i class="fa fa-star checked"></i> Rate</button>
                         </div>
     
                     </div>
@@ -141,22 +145,21 @@
                     <div class="toplists pb-3" style="color: white;">
                         <h3 style="border-bottom: 1px solid rgb(70, 69, 69) ; padding-bottom: 5px; ">Top List</h3>
                         @foreach ($movies as $mvs)
-                            
-                        @endforeach
-                            <div class="card bg-dark mb-3 mt-3" style="color: white;border: 1px solid rgb(70, 69, 69)">
-                                <div class="row g-0">
-                                  <div class="col-md-4">
-                                    <img src="{{ asset('storage/' . $mvs->poster) }}" style="min-height: 150px" class="img-fluid rounded-start" alt="...">
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="card-body">
-                                      <a href="/movieDetail"><h5 class="card-title">{{ $mvs->title }}</h5></a>
-                                      <p style="font-size: 14px"><i class="bi bi-stopwatch"></i> {{ $mvs->duration }}</p>
-                                      <p style="font-size: 15px">{{ implode(', ', $mvs->genres->pluck('name')->toArray()) }}</p>
-                                    </div>
-                                  </div>
-                                </div>
-                            </div>                 
+                        <div class="card bg-dark mb-3 mt-3" style="color: white;border: 1px solid rgb(70, 69, 69)">
+                          <div class="row g-0">
+                            <div class="col-md-4">
+                              <img src="{{ asset('storage/' . $mvs->poster) }}" style="min-height: 150px" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body">
+                                <a href="/movies/{{ $mvs->slug }}"><h5 class="card-title">{{ $mvs->title }}</h5></a>
+                                <p style="font-size: 14px"><i class="bi bi-stopwatch"></i> {{ $mvs->duration }}</p>
+                                <p style="font-size: 15px">{{ implode(', ', $mvs->genres->pluck('name')->toArray()) }}</p>
+                              </div>
+                            </div>
+                          </div>
+                      </div>            
+                        @endforeach     
                     </div>
                     <div class="recentNews" style="color: white;">
                         <h3 style="border-bottom: 1px solid rgb(70, 69, 69); padding-bottom: 5px; ">Recent News</h3>
