@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($genres as $genreData) {
-            \App\Models\Genre::factory()->create([
+            \App\Models\Genre::create([
                 'name' => $genreData['name'],
                 'slug' => Str::slug($genreData['name']),
             ]);

@@ -33,14 +33,29 @@
                           </div>
                           <div class="mb-3">
                             <label class="form-label">Genre</label>
-                            @foreach ($genres as $genreID => $genreName)
+                            <div class="row">
+                              <div class="col-md-6">
+                                @foreach ($genres->take(6) as $genreID => $genreName)
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" name="genre_ids[]" value="{{ $genreID }}">
+                                  <label class="form-check-label">
+                                    {{ $genreName }}
+                                  </label>
+                                </div>
+                              @endforeach
+                              </div>
+                              <div class="col-md-6">
+                                @foreach ($genres->skip(6) as $genreID => $genreName)
                               <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="genre_ids[]" value="{{ $genreID }}">
                                 <label class="form-check-label">
                                   {{ $genreName }}
                                 </label>
                               </div>
-                            @endforeach
+                              @endforeach
+                              </div>
+                            </div>
+
                           </div>
                           <div class="mb-3">
                             <label for="duration" class="form-label">Duration</label>
@@ -62,6 +77,22 @@
                                 </div>
                             @enderror
                           </div>
+                          <div class="mb-3">
+                            <label for="year">Year</label>
+                            <select name="year" class="form-control">
+                              @php
+                                $defaultYear = old('year') ?? 1900;
+                              @endphp
+                              @for ($i = date('Y'); $i >= 1900; $i--)
+                                @if ($i == $defaultYear)
+                                  <option value="{{ $i }}" selected>{{ $i }}</option>
+                                @else
+                                  <option value="{{ $i }}">{{ $i }}</option>
+                                @endif
+                              @endfor
+                            </select>
+                          </div>
+                          
                         <div class="mb-3">
                           <label for="poster" class="form-label">Poster</label>
                           <img class="img-preview img-fluid mb-3 col-sm-5">
@@ -82,15 +113,21 @@
                           <trix-editor input="synopsis"></trix-editor>
                       </div> 
                       <div class="mb-3">
-                        <label for="rating" class="form-label">Rating</label>
-                        <input type="number" class="form-control @error('rating') is-invalid @enderror" id="rating" 
-                        name="rating" required autofocus value="{{ old('rating') }}">
-                        @error('rating')
-                            <div class="invalid-feedback">
-                              {{ $message }}
-                            </div>
-                        @enderror
+                        <label for="rating">Rating</label>
+                        <select name="rating" class="form-control">
+                          @php
+                            $defaultRating = old('rating') ?? 1;
+                          @endphp
+                          @for ($i = 1; $i <= 10; $i++)
+                            @if ($i == $defaultRating)
+                              <option value="{{ $i }}" selected>{{ $i }}</option>
+                            @else
+                              <option value="{{ $i }}">{{ $i }}</option>
+                            @endif
+                          @endfor
+                        </select>
                       </div>
+                      
                       <button type="submit" class="btn btn-primary">Create Movie</button>
                     </form> 
             </div>

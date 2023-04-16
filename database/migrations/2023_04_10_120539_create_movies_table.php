@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('duration');
             $table->text('synopsis');
             $table->text('poster');
+            $table->string('year');
             $table->string('trailer');
             $table->integer('rating');
             $table->timestamps();

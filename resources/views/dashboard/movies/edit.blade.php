@@ -67,6 +67,19 @@
                             </div>
                         @enderror
                       </div>
+                      <div class="mb-3">
+                        <label for="year">Year</label>
+                        <select name="year" class="form-control">
+                            @for ($i = date('Y'); $i >= 1900; $i--)
+                                @if (old('year', $movie->year) == $i)
+                                    <option value="{{ $i }}" selected>{{ $i }}</option>
+                                @else
+                                    <option value="{{ $i }}">{{ $i }}</option>
+                                @endif
+                            @endfor
+                        </select>
+                    </div>
+                    
                     <div class="mb-3">
                       <label for="poster" class="form-label">Poster</label>
                       <input type="hidden" name="oldPoster" value="{{ $movie->poster }}">
@@ -92,15 +105,17 @@
                       <trix-editor input="synopsis"></trix-editor>
                   </div> 
                   <div class="mb-3">
-                    <label for="rating" class="form-label">Rating</label>
-                    <input type="number" class="form-control @error('rating') is-invalid @enderror" id="rating" 
-                    name="rating" required autofocus value="{{ old('rating', $movie->rating) }}">
-                    @error('rating')
-                        <div class="invalid-feedback">
-                          {{ $message }}
-                        </div>
-                    @enderror
-                  </div>
+                    <label for="rating">Rating</label>
+                    <select name="rating" class="form-control">
+                        @for ($i = 1; $i <= 10; $i++)
+                            @if (old('rating', $movie->rating) == $i)
+                                <option value="{{ $i }}" selected>{{ $i }}</option>
+                            @else
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endif
+                        @endfor
+                    </select>
+                </div>
                   <button type="submit" class="btn btn-primary">Update Movie</button>
                 </form> 
             </div>

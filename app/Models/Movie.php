@@ -23,7 +23,7 @@ class Movie extends Model
              });
          }); 
 
-         $query->when($filters['filterGenre'] ?? false, function ($query, $filterGenre) {
+        $query->when($filters['filterGenre'] ?? false, function ($query, $filterGenre) {
             // jumlah genre yg movie punya
             $genreCount = count($filterGenre);
             // dapatkan movie berdasarkan genre yg dipilih
@@ -34,7 +34,11 @@ class Movie extends Model
                       ->select('movies.id');
             });
         });
-        
+
+        $query->when($filters['year'] ?? false, function ($query, $year) {
+            // filter berdasarkan tahun
+            return $query->where('year', $year);
+        });
         return $query;        
         
     }

@@ -48,21 +48,23 @@
                         </div>
 
                     </div>
-                  </form>
                     <div class="year" style="color: white">
                         <h3 style="border-bottom: 1px solid rgb(70, 69, 69); padding-bottom: 5px">Movies by Year</h3>
                         <ul class="d-flex flex-wrap list-unstyled">
-                          @php $currentYear = date('Y') @endphp
+                          @php 
+                            $currentYear = date('Y')
+                          @endphp
                           @for($i = $currentYear; $i >= 2000; $i--)
                             <li>
                               <label class="radio">
-                                <input type="radio" name="year" value="{{ $i }}">
+                                <input type="radio" name="year" value="{{ $i }}" {{ request('year') == $i ? 'checked' : '' }}>
                                 <span style="color: #fff">{{ $i }}</span>
                               </label>
                             </li>
                           @endfor
                         </ul>                        
                     </div>
+                    </form>
                     <div class="rate" style="color: white">
                       <h3 style="border-bottom: 1px solid rgb(70, 69, 69); padding-bottom: 5px">Rating</h3>
                       <ul class="list-unstyled">

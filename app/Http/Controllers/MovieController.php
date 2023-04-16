@@ -42,6 +42,7 @@ class MovieController extends Controller
             'genre_ids' => ['required', 'array'],
             'duration' => 'required',
             'trailer' => 'required',
+            'year' => 'required',
             'poster' => 'image|file|max:2048',
             'synopsis' => 'required',
             'rating' => 'required'
@@ -88,6 +89,7 @@ class MovieController extends Controller
         'genre_ids' => ['required', 'array'],
         'duration' => 'required',
         'trailer' => 'required',
+        'year' => 'required',
         'poster' => 'image|file|max:2048',
         'synopsis' => 'required',
         'rating' => 'required'

@@ -23,6 +23,7 @@
                             <ul class="list-unstyled">
                                 <li><b>Genre :</b> {{ implode(', ', $movie->genres->pluck('name')->toArray()) }}</li>
                                 <li><b>Rating :</b> {{ $movie->rating }}/10</li>
+                                <li><b>Release :</b> {{ $movie->year }}</li>
                             </ul>
                         </div>
                         <div class="rate">
