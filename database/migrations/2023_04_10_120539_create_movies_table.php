@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            // $table->foreignId('genre_id');
             $table->string('duration');
             $table->text('synopsis');
             $table->text('poster');
@@ -29,6 +28,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('genre_id')->constrained();
             $table->foreignId('movie_id')->constrained();
+            // $table->integer('user_rating')->nullable();
+            // $table->unique(['genre_id', 'movie_id']);
         });
     }
 

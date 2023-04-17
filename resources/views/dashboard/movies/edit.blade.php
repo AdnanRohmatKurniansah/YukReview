@@ -38,7 +38,9 @@
                         @php
                           $selectedGenreIDs = $movie->genres->pluck('id')->toArray();
                         @endphp
-                        @foreach ($genres as $genreID => $genreName)
+                        <div class="row">
+                          <div class="col-md-6">
+                            @foreach ($genres->take(6) as $genreID => $genreName)
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="genre_ids[]" value="{{ $genreID }}" @checked(in_array($genreID, $selectedGenreIDs))>
                             <label class="form-check-label">
@@ -46,6 +48,18 @@
                             </label>
                           </div>
                         @endforeach
+                          </div>
+                          <div class="col-md-6">
+                            @foreach ($genres->skip(6) as $genreID => $genreName)
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="genre_ids[]" value="{{ $genreID }}" @checked(in_array($genreID, $selectedGenreIDs))>
+                            <label class="form-check-label">
+                              {{ $genreName }}
+                            </label>
+                          </div>
+                        @endforeach
+                          </div>
+                        </div>
                       </div>
                       <div class="mb-3">
                         <label for="duration" class="form-label">Duration</label>

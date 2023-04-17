@@ -19,7 +19,7 @@
       <ul class="list-unstyled text-light">
         <li class="nav-item dropdown mt-3">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
+           <span class="mr-2 text-light">{{ auth()->user()->name }}</span>
           </a>
           <ul class="dropdown-menu">
             @php
