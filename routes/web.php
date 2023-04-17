@@ -6,9 +6,11 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\News;
+use App\Models\Review;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +43,8 @@ Route::get('/movies/{movie:slug}', function (Movie $movie) {
         'title' => "Movies",
         'movie' => $movie,
         'news' => News::latest()->paginate(2),
-        "movies" =>  Movie::orderBy('rating', 'desc')->paginate(3)
+        'movies' =>  Movie::orderBy('rating', 'desc')->paginate(3),
+        'reviews' => Review::where('movie_id', $movie->id)->get()
     ]);
 });
 
@@ -79,6 +82,7 @@ Route::prefix('auth')->group(function() {
     });
 });
 
+Route::post('/movies/{movie:slug}', [MovieController::class, 'reviewMovie'])->name('review-movie');
 
 Route::middleware(['auth'])->group(function () {
     Route::prefix('dashboard')->group(function () {

@@ -26,11 +26,7 @@
                                 <li><b>Release :</b> {{ $movie->year }}</li>
                             </ul>
                         </div>
-                        <div class="rate">
-                          <h5 class="mt-5">Your Rating</h5>
-                          <button type="button" class="btn btn-dark"><i class="fa fa-star checked"></i> Rate</button>
-                        </div>
-    
+                  
                     </div>
                 </div>
                 <div class="row mt-5">
@@ -185,6 +181,114 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+          <div class="review">
+            <h3 style="border-bottom: 1px solid rgb(70, 69, 69); padding-bottom: 5px;">Review Section</h3>
+            @if ($reviews->count()) 
+              <div class="col-12">
+                <div class="user-review pt-3">
+                  <div id="carouselExampleAutoplayingx" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" >
+                      <div class="carousel-item active">
+                        <div class="row">
+                          @foreach ($reviews->take(3) as $review)
+                          <div class="col-md-4 mb-3">
+                            <div class="card" style="color: white;border: 1px solid rgb(70, 69, 69)">
+                              <div class="card-body bg-dark">
+                                <p class="card-text">"{{ $review->review }}"</p>
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <img src="/assets/img/blank.png" class="rounded-circle img-fluid">
+                                  </div>
+                                  <div class="col-md-9">
+                                    <h6><i class="fa fa-star checked"></i>{{ $review->rating }}/10</h6>
+                                    <p>Name : {{ $review->name }}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          @endforeach
+                        </div>
+                      </div>
+                      @foreach ($reviews->skip(3)->chunk(3) as $chunk)
+                        <div class="carousel-item">
+                          <div class="row">
+                            @foreach ($chunk as $review)
+                              <div class="col-md-4 mb-3">
+                                <div class="card" style="color: white;border: 1px solid rgb(70, 69, 69)">
+                                  <div class="card-body bg-dark">
+                                    <p class="card-text">"{{ $review->review }}"</p>
+                                    <div class="row">
+                                      <div class="col-md-3">
+                                        <img src="/assets/img/blank.png" class="rounded-circle img-fluid">
+                                      </div>
+                                      <div class="col-md-9">
+                                        <h6><i class="fa fa-star checked"></i>{{ $review->rating }}/10</h6>
+                                        <p>Name : {{ $review->name }}</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      @endforeach
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplayingx" data-bs-slide="prev">
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplayingx" data-bs-slide="next">
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            @endif
+              <div class="col-lg-8 p-3 mt-4"  style="border: 1px solid rgb(70, 69, 69); border-radius: 5px">
+                  <h3>Review</h3>
+                    <form action="{{ route('review-movie', $movie->slug) }}" method="post">
+                      @csrf
+                      <input type="hidden" name="movie_id" value="{{ $movie->id}}">
+                    <div class="mb-3">
+                      <label class="form-label"><i class="bi bi-star-fill text-warning"></i> Rating</label>
+                      <div class="input-group">
+                        <select class="form-select" name="rating">
+                          @for ($i = 1; $i < 11; $i++)
+                              <option value="{{ $i }}">
+                                  {{ $i }}
+                              </option>
+                          @endfor
+                      </select>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Your Review</label>
+                      <div class="input-group">
+                        <textarea name="review" class="form-control @error('review') is-invalid @enderror"  required value="{{ old('review') }}"></textarea>
+                        @error('review')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Enter Captcha</label>
+                      {!! htmlFormSnippet() !!}
+                      @error('g-recaptcha-response')
+                      <span class="text-danger" role="alert">
+                        {{ $message }}
+                      </span>
+                    @enderror
+                    </div> 
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+                </div>
+            </div>
+          </div>
     </div>
 </section>
 

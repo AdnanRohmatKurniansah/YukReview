@@ -61,4 +61,8 @@ class Movie extends Model
             ]
         ];
     }
+    public function Reviews()
+    {
+    return $this->hasMany(Review::class, 'movie_id');
+    }
 }
