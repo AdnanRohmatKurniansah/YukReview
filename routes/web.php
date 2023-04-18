@@ -33,7 +33,7 @@ Route::get('/', function () {
 
 Route::get('/movies', function () {
     return view('movies', [
-        'movies' => Movie::latest()->filter(request(['search', 'filterGenre', 'year']))->paginate(16),
+        'movies' => Movie::latest()->filter(request(['search', 'filterGenre', 'year', 'rating']))->paginate(16),
         'genres' => Genre::all(), 
     ]);
 });

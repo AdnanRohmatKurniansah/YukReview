@@ -64,63 +64,68 @@
                           @endfor
                         </ul>                        
                     </div>
-                    </form>
-                    <div class="rate" style="color: white">
+                    <div class="rate year" style="color: white">
                       <h3 style="border-bottom: 1px solid rgb(70, 69, 69); padding-bottom: 5px">Rating</h3>
-                      <ul class="list-unstyled">
+                      <ul class="d-flex flex-wrap list-unstyled">
                         <li class="ten-star mb-2">
-                            <a href="#">
-                                @for($i = 0; $i < 10; $i++)
-                                    <span class="fa fa-star checked"></span>
-                                @endfor
-                                <label>(2)</label>
-                            </a>
+                            <label class="radio">
+                              @for($i = 10; $i >= 1; $i--)
+                              <input type="radio" name="rating" value="{{ $i }}" {{ request('rating') == $i ? 'checked' : '' }} {{ request('rating') == $i ? 'disabled' : '' }}>
+                                  <i class="fa fa-star check"></i>
+                              @endfor
+                              <label class="count">(2)</label>
+                            </label>
                         </li>
                         <li class="nine-star mb-2">
-                            <a href="#">
-                                @for($i = 0; $i < 9; $i++)
-                                    <span class="fa fa-star checked"></span>
-                                @endfor
-                                <span class="fa fa-star"></span>
-                                <label>(10)</label>
-                            </a>
+                          <label class="radio">
+                            @for($i = 9; $i >= 1; $i--)
+                            <input type="radio" name="rating" value="{{ $i }}" {{ request('rating') == $i ? 'checked' : '' }} {{ request('rating') == $i ? 'disabled' : '' }}>
+                                <i class="fa fa-star check"></i>
+                            @endfor
+                            <i class="fa fa-star"></i>
+                            <label class="count">(2)</label>
+                          </label>
                         </li>
                         <li class="eight-star mb-2">
-                            <a href="#">
-                                @for($i = 0; $i < 8; $i++)
-                                    <span class="fa fa-star checked"></span>
-                                @endfor
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <label>(27)</label>
-                            </a>
+                          <label class="radio">
+                            @for($i = 8; $i >= 1; $i--)
+                            <input type="radio" name="rating" value="{{ $i }}" {{ request('rating') == $i ? 'checked' : '' }} {{ request('rating') == $i ? 'disabled' : '' }}>
+                                <i class="fa fa-star check"></i>
+                            @endfor
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                          <label class="count">(2)</label>
+                          </label>
                         </li>
                         <li class="seven-star mb-2">
-                            <a href="#">
-                                @for($i = 0; $i < 7; $i++)
-                                    <span class="fa fa-star checked"></span>
-                                @endfor
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <label>(13)</label>
-                            </a>
+                          <label class="radio">
+                            @for($i = 7; $i >= 1; $i--)
+                            <input type="radio" name="rating" value="{{ $i }}" {{ request('rating') == $i ? 'checked' : '' }} {{ request('rating') == $i ? 'disabled' : '' }}>
+                                <i class="fa fa-star check"></i>
+                            @endfor
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                          <label class="count">(2)</label>
+                          </label>
                         </li>
                         <li class="five-star mb-2">
-                            <a href="#">
-                                @for($i = 0; $i < 5; $i++)
-                                    <span class="fa fa-star checked"></span>
-                                @endfor
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <label>(1)</label>
-                            </a>
+                          <label class="radio">
+                            @for($i = 5; $i >= 1; $i--)
+                            <input type="radio" name="rating" value="{{ $i }}" {{ request('rating') == $i ? 'checked' : '' }} {{ request('rating') == $i ? 'disabled' : '' }}>
+                                <i class="fa fa-star check"></i>
+                            @endfor
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                          <label class="count">(2)</label>
+                          </label>
                         </li>
                     </ul>
-                    
-                    </div>
+                  </div>
+                </form>
                 </div>
                   
             </div>

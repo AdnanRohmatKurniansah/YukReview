@@ -305,10 +305,14 @@ a {
     color: #fff
   }
 
-  /* rate */
-  .checked {
+
+  .year .radio input[type="radio"]:checked + i {
+   border-bottom:3px solid red;
+  }
+  .check {
     color: orange;
   }
+
 
 
   /* footer */

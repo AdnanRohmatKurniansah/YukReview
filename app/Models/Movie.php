@@ -39,6 +39,11 @@ class Movie extends Model
             // filter berdasarkan tahun
             return $query->where('year', $year);
         });
+
+        $query->when($filters['rating'] ?? false, function ($query, $rating) {
+            // filter berdasarkan tahun
+            return $query->where('rating', $rating);
+        });
         return $query;        
         
     }
