@@ -201,10 +201,11 @@
                                     <img src="/assets/img/blank.png" class="rounded-circle img-fluid">
                                   </div>
                                   <div class="col-md-9">
-                                    <h6><i class="fa fa-star checked"></i>{{ $review->rating }}/10</h6>
+                                    <h6><i class="fa fa-star check"></i>{{ $review->rating }}/10</h6>
                                     <p>Name : {{ $review->name }}</p>
                                   </div>
                                 </div>
+                                <small class="d-flex justify-content-end">{{ $review->created_at->format('D, d, M Y') }}</small>
                               </div>
                             </div>
                           </div>
@@ -224,10 +225,11 @@
                                         <img src="/assets/img/blank.png" class="rounded-circle img-fluid">
                                       </div>
                                       <div class="col-md-9">
-                                        <h6><i class="fa fa-star checked"></i>{{ $review->rating }}/10</h6>
+                                        <h6><i class="fa fa-star check"></i>{{ $review->rating }}/10</h6>
                                         <p>Name : {{ $review->name }}</p>
                                       </div>
                                     </div>
+                                    <small class="d-flex justify-content-end">{{ $review->created_at->format('D, d, M Y') }}</small>
                                   </div>
                                 </div>
                               </div>
@@ -245,49 +247,63 @@
 
                 </div>
               </div>
-            @endif
-              <div class="col-lg-8 p-3 mt-4"  style="border: 1px solid rgb(70, 69, 69); border-radius: 5px">
-                  <h3>Review</h3>
-                    <form action="{{ route('review-movie', $movie->slug) }}" method="post">
-                      @csrf
-                      <input type="hidden" name="movie_id" value="{{ $movie->id}}">
-                    <div class="mb-3">
-                      <label class="form-label"><i class="bi bi-star-fill text-warning"></i> Rating</label>
-                      <div class="input-group">
-                        <select class="form-select" name="rating">
-                          @for ($i = 1; $i < 11; $i++)
-                              <option value="{{ $i }}">
-                                  {{ $i }}
-                              </option>
-                          @endfor
-                      </select>
+            @else
+              <div class="col-12">
+                <h4 class="d-flex justify-content-center p-5">There are no ratings for this film yet</h4>
+              </div>
+          @endif
+
+              @php
+                $existingReview = \App\Models\Review::where('user_id', auth()->user()->id)
+                  ->where('movie_id', $movie->id)
+                  ->first();
+              @endphp
+              @if (!$existingReview)     
+                <div class="col-lg-8 p-3 mt-4"  style="border: 1px solid rgb(70, 69, 69); border-radius: 5px">
+                    <h3>Review</h3>
+                      <form action="{{ route('review-movie', $movie->slug) }}" method="post">
+                        @csrf
+                        <input type="hidden" name="movie_id" value="{{ $movie->id}}">
+                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                      <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-star-fill text-warning"></i> Rating</label>
+                        <div class="input-group">
+                          <select class="form-select" name="rating">
+                            @for ($i = 1; $i < 11; $i++)
+                                <option value="{{ $i }}">
+                                    {{ $i }}
+                                </option>
+                            @endfor
+                        </select>
+                        </div>
                       </div>
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label">Your Review</label>
-                      <div class="input-group">
-                        <textarea name="review" class="form-control @error('review') is-invalid @enderror"  required value="{{ old('review') }}"></textarea>
-                        @error('review')
-                          <div class="invalid-feedback">
-                            {{ $message }}
-                          </div>
-                        @enderror
+                      <div class="mb-3">
+                        <label class="form-label">Your Review</label>
+                        <div class="input-group">
+                          <textarea name="review" class="form-control @error('review') is-invalid @enderror"  required value="{{ old('review') }}"></textarea>
+                          @error('review')
+                            <div class="invalid-feedback">
+                              {{ $message }}
+                            </div>
+                          @enderror
+                        </div>
                       </div>
+                      <div class="mb-3">
+                        <label class="form-label">Enter Captcha</label>
+                        {!! htmlFormSnippet() !!}
+                        @error('g-recaptcha-response')
+                        <span class="text-danger" role="alert">
+                          {{ $message }}
+                        </span>
+                      @enderror
+                      </div> 
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
                     </div>
-                    <div class="mb-3">
-                      <label class="form-label">Enter Captcha</label>
-                      {!! htmlFormSnippet() !!}
-                      @error('g-recaptcha-response')
-                      <span class="text-danger" role="alert">
-                        {{ $message }}
-                      </span>
-                    @enderror
-                    </div> 
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
                   </div>
-                </div>
-            </div>
+              </div>
+              @endif
+
           </div>
     </div>
 </section>

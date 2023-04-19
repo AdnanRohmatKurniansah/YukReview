@@ -145,24 +145,26 @@ class MovieController extends Controller
         $slug = SlugService::createSlug(Movie::class, 'slug', $request->title);
         return response()->json(['slug' => $slug]);
     }
-
+    
     public function reviewMovie(Request $request) 
     {
+
         if (!auth()->check()) {
             return redirect('/auth/login')->with('toast_error', 'You must be logged in to submit a review.');
         }
 
         $validatedData = $request->validate([
             'movie_id' => 'required',
+            'user_id' => 'required',
             'g-recaptcha-response' => 'recaptcha',
             'rating' => 'required|numeric',
             'review' => 'required|min:4'
         ]);
         
+        $validatedData['user_id'] = auth()->user()->id;
         $validatedData['name'] = auth()->user()->name;
         $validatedData['email'] = auth()->user()->email;
         
-
         Review::create($validatedData);
 
         return redirect()->back()->with('success', 'Thankyou for your review');

@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('movie_id');
+            $table->foreignId('movie_id');
+            $table->foreignId('user_id');
             $table->string('name');
             $table->string('email');
             $table->text('review');

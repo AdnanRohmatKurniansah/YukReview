@@ -70,48 +70,63 @@
                         <li class="ten-star mb-2">
                             <label class="radio">
                               @for($i = 10; $i >= 1; $i--)
+                              @php
+                                  $mvs = \App\Models\Movie::where('rating', '10')->count()
+                              @endphp
                               <input type="radio" name="rating" value="{{ $i }}" {{ request('rating') == $i ? 'checked' : '' }} {{ request('rating') == $i ? 'disabled' : '' }}>
                                   <i class="fa fa-star check"></i>
                               @endfor
-                              <label class="count">(2)</label>
+                              <label class="count">({{ $mvs }})</label>
                             </label>
                         </li>
                         <li class="nine-star mb-2">
                           <label class="radio">
                             @for($i = 9; $i >= 1; $i--)
+                            @php
+                              $mvs = \App\Models\Movie::where('rating', '9')->count()
+                            @endphp
                             <input type="radio" name="rating" value="{{ $i }}" {{ request('rating') == $i ? 'checked' : '' }} {{ request('rating') == $i ? 'disabled' : '' }}>
                                 <i class="fa fa-star check"></i>
                             @endfor
                             <i class="fa fa-star"></i>
-                            <label class="count">(2)</label>
+                            <label class="count">({{ $mvs }})</label>
                           </label>
                         </li>
                         <li class="eight-star mb-2">
                           <label class="radio">
                             @for($i = 8; $i >= 1; $i--)
+                            @php
+                              $mvs = \App\Models\Movie::where('rating', '8')->count();
+                            @endphp
                             <input type="radio" name="rating" value="{{ $i }}" {{ request('rating') == $i ? 'checked' : '' }} {{ request('rating') == $i ? 'disabled' : '' }}>
                                 <i class="fa fa-star check"></i>
                             @endfor
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                          <label class="count">(2)</label>
+                          <label class="count">({{ $mvs }})</label>
                           </label>
                         </li>
                         <li class="seven-star mb-2">
                           <label class="radio">
                             @for($i = 7; $i >= 1; $i--)
+                            @php
+                              $mvs = \App\Models\Movie::where('rating', '7')->count();
+                            @endphp
                             <input type="radio" name="rating" value="{{ $i }}" {{ request('rating') == $i ? 'checked' : '' }} {{ request('rating') == $i ? 'disabled' : '' }}>
                                 <i class="fa fa-star check"></i>
                             @endfor
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                          <label class="count">(2)</label>
+                          <label class="count">({{ $mvs }})</label>
                           </label>
                         </li>
                         <li class="five-star mb-2">
                           <label class="radio">
                             @for($i = 5; $i >= 1; $i--)
+                            @php
+                              $mvs = \App\Models\Movie::where('rating', '5')->count();
+                            @endphp
                             <input type="radio" name="rating" value="{{ $i }}" {{ request('rating') == $i ? 'checked' : '' }} {{ request('rating') == $i ? 'disabled' : '' }}>
                                 <i class="fa fa-star check"></i>
                             @endfor
@@ -120,7 +135,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                          <label class="count">(2)</label>
+                          <label class="count">({{ $mvs }})</label>
                           </label>
                         </li>
                     </ul>
@@ -153,7 +168,7 @@
                             <img src="{{ asset('storage/' . $movie->poster) }}" class="card-img-top" alt="..." style="min-height: 200px; max-height: 200px">
                             <div class="card-body bg-dark" style="color: #fff">
                               <h6 class="card-text">{{ $movie->title }}</h6>
-                              <p class="small card-text"><i class="fa fa-star checked"></i> {{ $movie->rating }}/10</p>
+                              <p class="small card-text"><i class="fa fa-star check"></i> {{ $movie->rating }}/10</p>
                             </div>
                           </a>
                           </div>

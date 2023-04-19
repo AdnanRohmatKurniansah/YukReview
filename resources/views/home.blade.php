@@ -21,7 +21,7 @@
                         <img src="{{ asset('storage/' . $movie->poster) }}" class="card-img-top" style="min-height: 400px; max-height: 400px">
                         <div class="card-body bg-dark" style="color: #fff">
                           <h5 class="card-text">{{ $movie->title }}</h5>
-                          <p class="card-text"><i class="fa fa-star checked"></i> {{ $movie->rating }}/10</p>
+                          <p class="card-text"><i class="fa fa-star check"></i> {{ $movie->rating }}/10</p>
                         </div>
                       </a>
                       </div>
@@ -46,7 +46,7 @@
                       <img src="{{ asset('storage/' . $list->poster) }}" class="card-img-top" style="min-height: 400px; max-height: 400px">
                       <div class="card-body bg-dark" style="color: #fff">
                         <h5 class="card-text">{{ $list->title }}</h5>
-                        <p class="card-text"><i class="fa fa-star checked"></i> {{ $list->rating }}/10</p>
+                        <p class="card-text"><i class="fa fa-star check"></i> {{ $list->rating }}/10</p>
                       </div>
                     </a>
                     </div>
