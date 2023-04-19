@@ -4,9 +4,9 @@
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
       <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="fas fa-film"></i>
       </div>
-      <div class="sidebar-brand-text mx-3">Admin</div>
+      <div class="sidebar-brand-text mx-3">YukReview</div>
   </a>
 
   <!-- Divider -->
@@ -24,7 +24,7 @@
 
   <!-- Heading -->
   <div class="sidebar-heading">
-      Interface
+      Manage Movies and News
   </div>
   @php
       $user = Auth::user();
@@ -71,6 +71,21 @@
           </div>
       </div>
   </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+      Export and Import Users Data
+  </div>
+
+  <li class="nav-item {{ Request::is('dashboard/user/index') ? 'active' : '' }}">
+    <a class="nav-link" href="/dashboard/user/index">
+        <i class="fas fa-users"></i>
+        <span>Import & Export</span></a>
+    </li>
+
   @endcan
 
 

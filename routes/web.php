@@ -6,7 +6,7 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\UserController;
 use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\News;
@@ -104,6 +104,9 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('/movies', MovieController::class)->except('show');
             Route::resource('/news/categories', CategoryController::class)->except('show');
             Route::resource('/news', NewsController::class)->except('show');
+            Route::get('/user/index', [UserController::class, 'index']);
+            Route::post('/user/import', [UserController::class, 'import']);
+            Route::get('/user/export', [UserController::class, 'export']);
         });
     });
 });
