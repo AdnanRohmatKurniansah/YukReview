@@ -27,12 +27,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home', [
+        'title' => "Home",
         'movies' => Movie::latest()->paginate(3)
     ]);
 });
 
 Route::get('/movies', function () {
     return view('movies', [
+        'title' => "All Movie",
         'movies' => Movie::latest()->filter(request(['search', 'filterGenre', 'year', 'rating']))->paginate(16),
         'genres' => Genre::all(), 
     ]);
@@ -40,7 +42,7 @@ Route::get('/movies', function () {
 
 Route::get('/movies/{movie:slug}', function (Movie $movie) {
     return view('movieDetail', [
-        'title' => "Movies",
+        'title' => "Movie",
         'movie' => $movie,
         'news' => News::latest()->paginate(2),
         'movies' =>  Movie::orderBy('rating', 'desc')->paginate(3),
@@ -67,6 +69,7 @@ Route::get('/news/{news:slug}', function (News $news) {
 
 Route::get('/toplists', function () {
     return view('toplists', [
+        'title' => "Top Lists",
         "movies" =>  Movie::orderBy('rating', 'desc')->paginate(10)
     ]);
 });

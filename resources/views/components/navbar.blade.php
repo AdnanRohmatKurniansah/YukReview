@@ -19,7 +19,15 @@
       <ul class="list-unstyled text-light">
         <li class="nav-item dropdown mt-3">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           <span class="mr-2 text-light">{{ auth()->user()->name }}</span>
+              <span class="mr-2 text-light">{{ auth()->user()->name }}</span>
+              @php
+                  $img = auth()->user()->profilePic
+              @endphp
+              @if ($img == null)
+                <img src="/assets/img/blank.png" class="rounded-circle img-fluid bg-white" style="vertical-align: middle; width: 40px">
+              @else
+                <img src="{{ asset('storage/' . $img) }}" class="rounded-circle img-fluid bg-white" style="vertical-align: middle; width: 40px">
+              @endif
           </a>
           <ul class="dropdown-menu">
             @php
