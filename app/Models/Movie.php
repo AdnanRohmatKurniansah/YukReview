@@ -5,21 +5,21 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Movie extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory, Sluggable, Sortable;
 
     protected $guarded = ['id'];
+
+    public $sortable = ['title', 'rating'];
 
     public function scopeFilter($query, array $filters) 
     {
         $query->when($filters['search'] ?? false, function($query, $search) {
             return $query->where(function($query) use ($search) {
-                 $query->where('title', 'like', '%' . $search . '%')
-                 ->orWhereHas('genres', function($query) use ($search) {
-                    $query->where('name', 'like', '%' . $search . '%');
-                });
+                 $query->where('title', 'like', '%' . $search . '%');
              });
          }); 
 

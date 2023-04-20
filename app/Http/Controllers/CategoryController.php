@@ -14,7 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('dashboard.news.categories.index', [
-            'categories' => Category::all()
+            'categories' => Category::sortable()->paginate(1)
         ]);
     }
 

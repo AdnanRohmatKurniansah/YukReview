@@ -5,13 +5,16 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class News extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory, Sluggable, Sortable;
 
     protected $guarded = ['id'];
     protected $with = ['category'];
+
+    public $sortable = ['title'];
 
     public function scopeFilter($query, array $filters) 
     {

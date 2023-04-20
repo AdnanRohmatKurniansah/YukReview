@@ -18,7 +18,7 @@ class MovieController extends Controller
     public function index()
     {
         return view('dashboard.movies.index', [
-            "movies" =>  Movie::all()
+            "movies" =>  Movie::sortable()->paginate(10)
         ]);
     }
 

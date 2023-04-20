@@ -14,8 +14,8 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Category Name</th>
-                        <th scope="col">Action  </th>
+                        <th scope="col">@sortablelink('name')</th>
+                        <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -39,6 +39,11 @@
                   </table>
             </div>
         </div>
+
+        <div class="d-flex justify-content-center">
+          {!! $categories->appends(Request::except('page'))->render() !!}
+        </div>
+
     </div>
 </div>
 @endsection

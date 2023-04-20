@@ -15,7 +15,7 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Title</th>
+                            <th scope="col">@sortablelink('title')</th>
                             <th scope="col">Category</th>
                             <th scope="col">Action </th>
                           </tr>
@@ -42,6 +42,11 @@
                       </table>
                 </div>
             </div>
+
+            <div class="d-flex justify-content-center">
+              {!! $news->appends(Request::except('page'))->render() !!}
+            </div>
+
         </div>
     </div>
 

@@ -15,9 +15,9 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Title</th>
+                            <th scope="col">@sortablelink('title')</th>
                             <th scope="col">Genre</th>
-                            <th scope="col">Rating</th>
+                            <th scope="col">@sortablelink('rating')</th>
                             <th scope="col">Action </th>
                           </tr>
                         </thead>
@@ -43,6 +43,11 @@
                         </tbody>
                       </table>
                 </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+              {{-- {{ $movies->links() }} --}}
+              {!! $movies->appends(Request::except('page'))->render() !!}
             </div>
         </div>
     </div>

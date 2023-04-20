@@ -14,7 +14,7 @@ class GenreController extends Controller
     public function index()
     {
         return view('dashboard.movies.genres.index', [
-            'genres' => Genre::all()
+            'genres' => Genre::sortable()->paginate(10)
         ]);
     }
 
