@@ -6,6 +6,7 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScrapController;
 use App\Http\Controllers\UserController;
 use App\Models\Genre;
 use App\Models\Movie;
@@ -75,10 +76,12 @@ Route::get('/toplists', function () {
 });
 
 Route::prefix('auth')->group(function() {
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
-    Route::post('/login', [AuthController::class, 'authenticate']);
-    Route::get('/register', [AuthController::class, 'register']);
-    Route::post('/register', [AuthController::class, 'store']);
+    Route::middleware(['guest'])->group(function() {
+        Route::get('/login', [AuthController::class, 'login'])->name('login');
+        Route::post('/login', [AuthController::class, 'authenticate']);
+        Route::get('/register', [AuthController::class, 'register']);
+        Route::post('/register', [AuthController::class, 'store']);
+    });
     
     Route::middleware(['auth'])->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
@@ -110,6 +113,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/user/index', [UserController::class, 'index']);
             Route::post('/user/import', [UserController::class, 'import']);
             Route::get('/user/export', [UserController::class, 'export']);
+
+            Route::get('/scrap', [ScrapController::class, 'scrap']);
         });
     });
 });

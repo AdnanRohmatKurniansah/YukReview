@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('poster');
             $table->string('year');
             $table->string('trailer');
-            $table->integer('rating');
+            $table->float('rating');
             $table->timestamps();
         });
 
@@ -28,8 +28,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('genre_id')->constrained();
             $table->foreignId('movie_id')->constrained();
-            // $table->integer('user_rating')->nullable();
-            // $table->unique(['genre_id', 'movie_id']);
         });
     }
 
