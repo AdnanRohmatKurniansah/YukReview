@@ -25,7 +25,7 @@
                                   $checked = request()->query('filterGenre');
                               }
                           @endphp
-                          @foreach ($genres->take(6) as $genre)   
+                          @foreach ($genres->take(13) as $genre)   
                               <div class="form-check">
                                   <input class="form-check-input" name="filterGenre[]" type="checkbox" value="{{ $genre->slug }}" {{ in_array($genre->slug, $checked) ? 'checked' : '' }}>
                                   <label class="form-check-label">
@@ -36,9 +36,9 @@
                       </div>
 
                           <div class="col-md-6">
-                            @foreach ($genres->skip(6) as $genre)
+                            @foreach ($genres->skip(13) as $genre)
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" >
+                                <input class="form-check-input" name="filterGenre[]" type="checkbox" value="{{ $genre->slug }}" {{ in_array($genre->slug, $checked) ? 'checked' : '' }}>
                                 <label class="form-check-label">
                                     {{ $genre->name }}
                                 </label>

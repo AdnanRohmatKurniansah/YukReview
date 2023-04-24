@@ -57,7 +57,7 @@
                           <div class="card bg-dark mb-3 mt-3" style="color: white; border: 1px solid rgb(70, 69, 69)">
                               <div class="row g-0">
                                 <div class="col-md-4">
-                                  <img src="{{ asset('storage/' . $movie->poster) }}" style="min-height: 150px" class="img-fluid rounded-start" alt="...">
+                                  <img src="{{ asset('storage/' . $movie->poster) }}" style="min-height: 200px; max-height: 150px" class="img-fluid rounded-start" alt="...">
                                 </div>
                                 <div class="col-md-8">
                                   <div class="card-body">

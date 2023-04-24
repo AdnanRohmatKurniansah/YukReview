@@ -8,6 +8,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScrapController;
 use App\Http\Controllers\UserController;
+use App\Models\Actor;
 use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\News;
@@ -37,7 +38,7 @@ Route::get('/movies', function () {
     return view('movies', [
         'title' => "All Movie",
         'movies' => Movie::latest()->filter(request(['search', 'filterGenre', 'year', 'rating']))->paginate(16),
-        'genres' => Genre::all(), 
+        'genres' => Genre::orderBy('name', 'asc')->get(), 
     ]);
 });
 

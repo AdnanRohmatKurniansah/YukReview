@@ -10,6 +10,12 @@
                     <h5 class="m-0 font-weight-bold text-primary">Movies</h5>
                 </div>
                 <div class="card-body">
+                  <form action="/dashboard/scrap" method="get">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" name="name" placeholder="Enter movie's name" aria-describedby="button-addon2">
+                      <button class="btn btn-success" type="submit" id="button-addon2">Scrap</button>
+                    </div>
+                  </form>
                     <a href="/dashboard/movies/create" class="btn btn-primary my-2">Add New Movies</a>
                     <table class="table">
                         <thead>

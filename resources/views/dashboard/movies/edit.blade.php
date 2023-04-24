@@ -40,7 +40,7 @@
                         @endphp
                         <div class="row">
                           <div class="col-md-6">
-                            @foreach ($genres->take(6) as $genreID => $genreName)
+                            @foreach ($genres->take(13) as $genreID => $genreName)
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="genre_ids[]" value="{{ $genreID }}" @checked(in_array($genreID, $selectedGenreIDs))>
                             <label class="form-check-label">
@@ -50,7 +50,7 @@
                         @endforeach
                           </div>
                           <div class="col-md-6">
-                            @foreach ($genres->skip(6) as $genreID => $genreName)
+                            @foreach ($genres->skip(13) as $genreID => $genreName)
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="genre_ids[]" value="{{ $genreID }}" @checked(in_array($genreID, $selectedGenreIDs))>
                             <label class="form-check-label">
@@ -118,7 +118,7 @@
                       <input id="synopsis" type="hidden" name="synopsis" value="{{ old('synopsis', $movie->synopsis) }}">
                       <trix-editor input="synopsis"></trix-editor>
                   </div> 
-                  <div class="mb-3">
+                  {{-- <div class="mb-3">
                     <label for="rating">Rating</label>
                     <select name="rating" class="form-control">
                         @for ($i = 1; $i <= 10; $i++)
@@ -129,7 +129,19 @@
                             @endif
                         @endfor
                     </select>
-                </div>
+                </div> --}}
+                <div class="mb-3">
+                  <label for="rating">Rating</label>
+                  <select name="rating" class="form-control">
+                      @for ($i = 0.5; $i <= 10; $i += 0.1)
+                          @if (abs(old('rating', $movie->rating) - $i) < 0.05)
+                              <option value="{{ $i }}" selected>{{ number_format($i, 1) }}</option>
+                          @else
+                              <option value="{{ $i }}">{{ number_format($i, 1) }}</option>
+                          @endif
+                      @endfor
+                  </select>
+              </div>              
                   <button type="submit" class="btn btn-primary">Update Movie</button>
                 </form> 
             </div>

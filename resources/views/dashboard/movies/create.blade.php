@@ -35,7 +35,7 @@
                             <label class="form-label">Genre</label>
                             <div class="row">
                               <div class="col-md-6">
-                                @foreach ($genres->take(6) as $genreID => $genreName)
+                                @foreach ($genres->take(13) as $genreID => $genreName)
                                 <div class="form-check">
                                   <input class="form-check-input" type="checkbox" name="genre_ids[]" value="{{ $genreID }}">
                                   <label class="form-check-label">
@@ -45,7 +45,7 @@
                               @endforeach
                               </div>
                               <div class="col-md-6">
-                                @foreach ($genres->skip(6) as $genreID => $genreName)
+                                @foreach ($genres->skip(13) as $genreID => $genreName)
                               <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="genre_ids[]" value="{{ $genreID }}">
                                 <label class="form-check-label">
