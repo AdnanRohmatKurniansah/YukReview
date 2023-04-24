@@ -853,7 +853,7 @@ class ImdbController extends Controller
                         $sMatch = IMDBHelper::cleanString($sMatch);
                     } else {
                         $sLocal = IMDBHelper::saveImageCast($sMatch, $aMatch[3][$i]);
-                        if (file_exists(dirname(__FILE__) . '/' . $sLocal)) {
+                        if (file_exists(storage_path('app/public/actor-images/' . $sLocal))) {
                             $sMatch = $sLocal;
                         } else {
                             //the 'big' image isn't available, try the 'mid' one (vice versa)
@@ -870,7 +870,7 @@ class ImdbController extends Controller
                             }
 
                             $sLocal = IMDBHelper::saveImageCast($sMatch, $aMatch[3][$i]);
-                            if (file_exists(dirname(__FILE__) . '/' . $sLocal)) {
+                            if (file_exists(storage_path('app/public/actor-images/' . $sLocal))) {
                                 $sMatch = $sLocal;
                             } else {
                                 $sMatch = IMDBHelper::cleanString($aMatch[2][$i]);
@@ -889,7 +889,7 @@ class ImdbController extends Controller
                     $aReturn,
                     array_fill_keys(
                         array_keys($aReturn, self::$sNotFound),
-                        'cast/not-found.jpg'
+                        'not-found.jpg'
                     )
                 );
 
@@ -2484,7 +2484,7 @@ class IMDBHelper extends ImdbController
     public static function saveImageCast($sUrl, $cId)
     {
         if ( ! preg_match('~http~', $sUrl)) {
-            return 'cast/not-found.jpg';
+            return 'not-found.jpg';
         }
 
         $sFilename = dirname(__FILE__) . '/cast/' . $cId . '.jpg';
@@ -2495,7 +2495,7 @@ class IMDBHelper extends ImdbController
         $aCurlInfo = self::runCurl($sUrl, true);
         $sData     = $aCurlInfo['contents'];
         if (false === $sData) {
-            return 'cast/not-found.jpg';
+            return 'not-found.jpg';
         }
 
         $oFile = fopen($sFilename, 'x');

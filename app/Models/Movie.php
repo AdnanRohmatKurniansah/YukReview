@@ -41,7 +41,7 @@ class Movie extends Model
         });
 
         $query->when($filters['rating'] ?? false, function ($query, $rating) {
-            // filter berdasarkan tahun
+            // filter berdasarkan rating
             return $query->where('rating', $rating);
         });
         return $query;        
@@ -69,5 +69,9 @@ class Movie extends Model
     public function Reviews()
     {
     return $this->hasMany(Review::class, 'movie_id');
+    }
+    public function actors()
+    {
+        return $this->belongsToMany(Actor::class);
     }
 }

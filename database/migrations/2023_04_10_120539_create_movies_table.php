@@ -29,6 +29,12 @@ return new class extends Migration
             $table->foreignId('genre_id')->constrained();
             $table->foreignId('movie_id')->constrained();
         });
+
+        Schema::create('actor_movie', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('actor_id')->constrained();
+            $table->foreignId('movie_id')->constrained();
+        });
     }
 
     /**
